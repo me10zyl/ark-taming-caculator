@@ -1,7 +1,10 @@
 let $scope , $rootScope , $interval , $cookies , $animate;
 $scope =  $rootScope = $interval = $cookies = $animate = {};
 
-window.$scope = $scope;
+//window.$scope = $scope;
+let creature;
+let creaturedata;
+
 
 $cookies = {
     getObject : function(){
@@ -2297,6 +2300,4 @@ $scope.knockoutcalc = function () {
         }*/
 }
 
-export default {
-    $scope : $scope
-}
+export default  $scope

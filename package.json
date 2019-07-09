@@ -9,7 +9,10 @@
   },
   "dependencies": {
     "core-js": "^2.6.5",
-    "vue": "^2.6.10"
+    "v-autocomplete": "git+https://github.com/paliari/v-autocomplete.git",
+    "vue": "^2.6.10",
+    "vue-autosuggest": "^2.0.1",
+    "vue2-autocomplete-js": "^0.2.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.9.0",
