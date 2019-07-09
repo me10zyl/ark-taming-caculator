@@ -9,9 +9,9 @@
             <div class="list">
                 <div class="row">
                     <label>倍率：</label>
-                    <select>
-                        <option>官服毁灭服(3倍)</option>
-                        <option>官服(1倍)</option>
+                    <select v-model="creature.usertamingmultiplier">
+                        <option value="3">官服毁灭服(3倍)</option>
+                        <option value="1">官服(1倍)</option>
                     </select>
                 </div>
                 <div class="row">
@@ -45,7 +45,7 @@
                 </h3>
             </div>
             <div class="list-table">
-                <div class="row" v-for="ko in creature.kos">
+                <div class="row" v-for="ko in creature.kos" v-bind:key="ko.komethod">
                     <label>{{ko.komethod}}</label>
                     <span v-if="ko.koquantities.Head">
                         头 : {{ko.koquantities.Head}}
@@ -63,7 +63,7 @@
                 </h3>
             </div>
             <div class="list-table">
-                <div class="row" v-for="food in creature.foods2">
+                <div class="row" v-for="food in creature.foods2" v-bind:key="food.name" @click="onClickFood(food)">
                     <label>{{food.name_chi}}</label>
                     <span>
                         {{food.maxfoodamount}}
@@ -82,10 +82,10 @@
             </div>
             <div class="list">
                 <div class="row">
-                    <label>总时间：</label>01:20:33
+                    <label>总时间：</label> {{creature.totaltimeStr}}
                 </div>
                 <div class="row">
-                    <label>苏醒时间：</label>01:10:33
+                    <label>苏醒时间：</label>{{creature.narcoticss && creature.narcoticss[0].buffertimeStr}}
                 </div>
             </div>
         </div>
@@ -96,6 +96,9 @@
                 </h3>
             </div>
             <div class="list">
+                <div class="row primary">
+                    清醒与麻醉时间差：{{creature.differenceStr}}
+                </div>
                 <div class="row primary">
                     <ul>
                         <li>喂麻药时间：00:50:00 (2019-07-08 17:30:41)</li>
@@ -139,6 +142,7 @@
                     foods: [],
                     knockout: null,
                     name_chi: null,
+                    food: 'Raw Meat'
                 },
                 creatures: []
             }
@@ -197,6 +201,10 @@
             focusMe(e) {
                 //console.log(e) // FocusEvent
             },
+            onClickFood ( food){
+                this.arkFoodCalc();
+
+            },
             onChangeLevel(e){
               this.arkSelectLevel()
             },
@@ -221,9 +229,14 @@
                 creature.tamingmultiplier = creature.usertamingmultiplier * $scope.basetamingmultiplier;
 
                 creature.tamingmethod = creature.tamingmethods[0];
+
+                creature.food = 'Raw Meat'
                 this.arkKoCalc();
                 this.arkMaxFoodCalc();
                 this.arkAllTimeCalc();
+                this.arkFoodCalc();
+                this.arkNarcoticsCalc();
+                this.arkFinalCalc();
             },
             arkKoCalc() {
                 let kos = [];
@@ -311,6 +324,41 @@
                     foods2Element.time = creature.times[f];
                     foods2Element.timeStr = toHHMMSS(foods2Element.time);
                 })
+            },
+            arkFoodCalc : function(){
+                console.log(this.creature.food)
+                this.creature.totaltime =  this.creature.times[this.creature.food]
+                this.creature.totaltimeStr = toHHMMSS(this.creature.totaltime)
+            },
+            arkNarcoticsCalc : function(){
+                let narcoticss = [];
+                for(let narcoticsmethodname in $scope.narcoticsmethods){
+                    let $narcotics = Object.assign({}, $scope.narcotics)
+                    var narcoticsmethod = $scope.narcoticsmethods[narcoticsmethodname];
+                    $narcotics.buffertime = this.creature.torpor / -this.creature.torporrate;
+                    $narcotics.max = Math.ceil($scope.totaltime * -this.creature.torporrate / (narcoticsmethod.torpor - this.creature.torporrate * narcoticsmethod.time));
+                    $narcotics.min = Math.max(Math.ceil(($scope.totaltime * -this.creature.torporrate - this.creature.torpor) / (narcoticsmethod.torpor - this.creature.torporrate * narcoticsmethod.time)), 0);
+                    $narcotics.buffernarcotics = Math.ceil(this.creature.torpor / narcoticsmethod.torpor);
+                    $narcotics.narcoticsbuffertime = narcoticsmethod.time * $narcotics.buffernarcotics;
+                    $narcotics.narcoticsmethod = narcoticsmethodname;
+                    $narcotics.buffertimeStr = toHHMMSS($narcotics.buffertime)
+                    //$scope.narcoticstimingcalc();
+                    narcoticss.push($narcotics)
+                }
+                this.creature.narcoticss = narcoticss;
+                this.creature.buffertime = narcoticss[0].buffertime;
+            },
+            arkFinalCalc : function(){
+                let creature = this.creature;
+                let difference = creature.totaltime - creature.buffertime;
+                creature.difference = difference;
+                creature.differenceStr = toHHMMSS(difference);
+                let mazui = []
+                for(let narcoticsmethodname in $scope.narcoticsmethods){
+                    let narcoticsmethod = $scope.narcoticsmethods[narcoticsmethodname];
+                    mazui.push({ amount : creature.difference * -creature.torporrate / narcoticsmethod.torpor, name : 'narcoticsmethodname' });
+                }
+                creature.mazui = mazui;
             }
         }
 
