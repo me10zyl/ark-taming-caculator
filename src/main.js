@@ -14,5 +14,8 @@ Vue.config.productionTip = false
 
 new Vue({
   render: h => h(App),
+    data : {
+      pageTitle : 'yilnz\'s 方舟驯服计算器'
+    }
 }).$mount('#app')
 

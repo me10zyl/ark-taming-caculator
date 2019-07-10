@@ -235,6 +235,7 @@
             arkSelectLevel(){
                 console.log('select level')
                 let creature = this.creature;
+                document.getElementsByTagName('title')[0].textContent = creature.name_chi + " " + creature.level + ' - yilnz\'s 方舟驯服计算器'
                 if(creature.name == null){
                     return null;
                 }
