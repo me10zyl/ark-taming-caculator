@@ -1,5 +1,8 @@
 <template>
     <div id="main">
+        <div style="text-align: center">
+            <h4>yilnz's 方舟驯服计算器</h4>
+        </div>
         <div>
             <div class="title">
                 <h3>
