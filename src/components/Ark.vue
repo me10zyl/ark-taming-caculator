@@ -32,13 +32,16 @@
                             </template>
                         </vue-autosuggest>
                     </div>
+                    <span style="font-size: 10px"  v-if="creature.name">
+                        <a :href="dododexUrl" target="_blank" id="dododexUrl">dododex</a>
+                    </span>
                 </div>
                 <div class="row">
                     <label>等级：</label><input v-model="creature.level" @change="onChangeLevel"/>
                 </div>
             </div>
         </div>
-        <div>
+        <div v-if="creature.tamingmethod == 'Standard'">
             <div class="title">
                 <h3>
                     击晕
@@ -60,6 +63,9 @@
             <div class="title">
                 <h3>
                     食物详情
+                    <span v-if="this.creature.tamingmethod == 'Non-Violent'">
+                        (非暴力驯服)
+                    </span>
                 </h3>
             </div>
             <div class="list-table">
@@ -74,7 +80,7 @@
                 </div>
             </div>
         </div>
-        <div>
+        <div v-if="creature.tamingmethod == 'Standard'">
             <div class="title">
                 <h3>
                     驯服详情
@@ -92,7 +98,7 @@
                 </div>
             </div>
         </div>
-        <div>
+        <div v-if="creature.tamingmethod == 'Standard'">
             <div class="title">
                 <h3>
                     总结
@@ -113,7 +119,7 @@
                 </div>
             </div>
         </div>
-        <div class="start">
+        <div class="start"  v-if="creature.tamingmethod == 'Standard'">
             <button>开始驯服</button>
         </div>
     </div>
@@ -124,6 +130,8 @@
     import '@/js/ark.js';
     import dinos from '@/js/dinos.js'
     import {formatTimeToStr, toHHMMSS} from '@/js/date.js';
+    import dododexNames from '@/js/dododexnames.js';
+
     //import Autocomplete from 'vue2-autocomplete-js';
     //require('vue2-autocomplete-js/dist/style/vue2-autocomplete.css')
 
@@ -162,6 +170,9 @@
             $rootScope.pagetitle = "ARK Taming Calculator";*/
         },
         computed: {
+            dododexUrl(){
+              return 'https://www.dododex.com/taming/' + this.creature.dododexName + '/' + this.creature.level;
+            },
             filteredOptions() {
                 return [
                     {
@@ -212,7 +223,8 @@
             onChangeLevel(e){
               console.log(this.creature.level)
               this.arkSelectLevel()
-                console.log(this.creature)
+              this.$set(this.creature, 'level', this.creature.level)
+              document.getElementById('dododexUrl').href = 'https://www.dododex.com/taming/' + this.creature.dododexName + '/' + this.creature.level;
             },
             onChangeUserTamingMul(){
                 this.arkSelectLevel()
@@ -244,6 +256,13 @@
                 creature.tamingmethod = creature.tamingmethods[0];
 
                 creature.food = creature.basefood
+
+                let dododexName = dododexNames[creature.name];
+                if(dododexName){
+                    creature.dododexName = dododexName.dododexName;
+                }else {
+                    creature.dododexName = creature.name.replace(' ', '').toLowerCase()
+                }
                 this.arkKoCalc();
                 this.arkMaxFoodCalc();
                 this.arkAllTimeCalc();
@@ -326,7 +345,7 @@
                     creature.foodrate = $scope.creatures[creature.name].foodrate * creature.foodratemultiplier;
                 }
                 if (creature.tamingmethod == "Non-Violent") {
-                    creature.foodrate = $scope.creatures[creature.name].foodrate * creature.foodratemultiplier * this.creatures[creature.name].nonviolentfoodratemultiplier;
+                    creature.foodrate = $scope.creatures[creature.name].foodrate * creature.foodratemultiplier * $scope.creatures[creature.name].nonviolentfoodratemultiplier;
                 }
 
                 for (var food in creature.maxfoodamounts) {
@@ -376,6 +395,9 @@
                 let creature = this.creature;
                 let difference = creature.totaltime - creature.buffertime;
                 creature.difference = difference;
+                if(isNaN(difference)){
+                    return
+                }
                 if(creature.difference < 0){
                     creature.differenceStr = '无需喂麻药';
                     creature.refillTimes = [];

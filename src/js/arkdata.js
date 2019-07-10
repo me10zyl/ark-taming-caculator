@@ -247,18 +247,22 @@ $scope.foods = {
         affinity: 9
     },
     'Human Feces': {
+        name_chi : '人类粪便',
         food: 10,
         affinity: 60
     },
     'Large Feces': {
+        name_chi : '大型动物粪便',
         food: 37.5,
         affinity: 225
     },
     'Medium Feces': {
+        name_chi : '中型动物粪便',
         food: 25,
         affinity: 150
     },
     'Small Feces': {
+        name_chi : '小型动物粪便',
         food: 12.5,
         affinity: 75
     },
