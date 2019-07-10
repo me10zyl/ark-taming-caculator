@@ -28,7 +28,7 @@
                                 :get-suggestion-value="getSuggestionValue"
                         >
                             <template slot-scope="{suggestion}">
-                                <span class="my-suggestion-item">{{suggestion.item.name_chi}}</span>
+                                <span class="my-suggestion-item">{{suggestion.item.name_chi}}({{suggestion.item.name}})</span>
                             </template>
                         </vue-autosuggest>
                     </div>
@@ -63,8 +63,8 @@
                 </h3>
             </div>
             <div class="list-table">
-                <div class="row" v-for="food in creature.foods2" v-bind:key="food.name" @click="onClickFood(food)">
-                    <label>{{food.name_chi}}</label>
+                <div class="row" v-for="food in creature.foods2" v-bind:key="food.name">
+                    <label><a href="javascript:void(0)" @click="onClickFood(food)">{{food.name_chi}}</a></label>
                     <span>
                         {{food.maxfoodamount}}
                     </span>
@@ -80,7 +80,10 @@
                     驯服详情
                 </h3>
             </div>
-            <div class="list">
+            <div class="list-table">
+                <div class="row">
+                    <label>选择的食物：</label>{{creature.food}}
+                </div>
                 <div class="row">
                     <label>总时间：</label> {{creature.totaltimeStr}}
                 </div>
@@ -103,7 +106,7 @@
                     <ul v-for="refillTime in creature.refillTimes">
                         <li>喂麻药时间：{{refillTime.refillTimeStr}}
                         <span v-for="narcotics in refillTime.narcotics" style="margin-left: 2px">
-                            <span>({{narcotics.name}}<span style="color: darkred"> {{narcotics.amount}} </span>个)</span>
+                            <span>({{narcotics.name_chi}}<span style="color: darkred"> {{narcotics.amount}} </span>个)</span>
                         </span>
                         </li>
                     </ul>
@@ -150,6 +153,7 @@
                 $scope.creatures[c].name_chi = dinos[c];
                 this.creatures.push($scope.creatures[c])
             }
+            window.$scope = $scope
             /*$scope.resetfoods();
             $scope.selectdino();
             $scope.maxfoodcalc();
@@ -199,8 +203,11 @@
             focusMe(e) {
                 //console.log(e) // FocusEvent
             },
-            onClickFood ( food){
+            onClickFood (food){
+                this.creature.food = food.name;
                 this.arkFoodCalc();
+                this.arkNarcoticsCalc();
+                this.arkFinalCalc();
             },
             onChangeLevel(e){
               console.log(this.creature.level)
@@ -236,7 +243,7 @@
 
                 creature.tamingmethod = creature.tamingmethods[0];
 
-                creature.food = 'Raw Meat'
+                creature.food = creature.basefood
                 this.arkKoCalc();
                 this.arkMaxFoodCalc();
                 this.arkAllTimeCalc();
@@ -297,7 +304,7 @@
                 if (this.creature.tamingmethod == "Non-Violent") {
 
                     for (var food in $scope.foods) {
-                        this.creature.maxfoodamounts[food] = Math.ceil(creature.requiredaffinity / $scope.foods[food].affinity / creature.tamingmultiplier / creaturedata.nonviolentfoodaffinitymultiplier);
+                        this.creature.maxfoodamounts[food] = Math.ceil(creature.requiredaffinity / $scope.foods[food].affinity / creature.tamingmultiplier / creature.nonviolentfoodaffinitymultiplier);
                     }
 
                 }
@@ -307,7 +314,7 @@
                     this.creature.foods2.push({
                         name : f,
                         maxfoodamount : this.creature.maxfoodamounts[f],
-                        name_chi: f
+                        name_chi: $scope.foods[f].name_chi ? $scope.foods[f].name_chi : f
                     })
                 })
             },
@@ -333,9 +340,9 @@
                 })
             },
             arkFoodCalc : function(){
-                console.log(this.creature.food)
                 this.creature.totaltime =  this.creature.times[this.creature.food]
-                this.creature.totaltimeStr = toHHMMSS(this.creature.totaltime)
+                this.$set(this.creature, 'totaltimeStr', toHHMMSS(this.creature.totaltime))
+                console.log(this.creature.totaltimeStr)
             },
             arkNarcoticsCalc : function(){
                 let narcoticss = [];
@@ -360,8 +367,9 @@
                 let mazui = []
                 for(let narcoticsmethodname in $scope.narcoticsmethods){
                     let narcoticsmethod = $scope.narcoticsmethods[narcoticsmethodname];
-                    mazui.push({ amount : Math.ceil(torpor / narcoticsmethod.torpor), name : narcoticsmethodname });
+                    mazui.push({ amount : Math.ceil(torpor / narcoticsmethod.torpor), name : narcoticsmethodname, name_chi : $scope.narcoticsmethods[narcoticsmethodname].name_chi});
                 }
+                mazui = mazui.reverse();
                 return mazui;
             },
             arkFinalCalc : function(){

@@ -21,58 +21,72 @@ $animate = {
 $scope.foods = {
 
     'Mejoberry': {
+        name_chi : '紫果子',
         food: 30,
         affinity: 30
     },
     'Mejoberry-Kentro': {
+        name_chi : 'Mejoberry-Kentro',
         food: 30,
         affinity: 10
     },
     'Other Berry': {
+        name_chi : '其他果子',
         food: 20,
         affinity: 20
     },
     'Other Berry-Kentro': {
+        name_chi : 'Other Berry-Kentro',
         food: 20,
         affinity: 7
     },
     'Raw Meat': {
+        name_chi : '生肉',
         food: 50,
         affinity: 50
     },
     'Raw Meat-Arthropluera': {
+        name_chi : 'Raw Meat-Arthropluera',
         food: 15,
         affinity: 15
     },
     'Raw Meat-Daeodon': {
+        name_chi : 'Raw Meat-Daeodon',
         food: 10,
         affinity: 10
     },
     'Raw Meat-Thylacoleo': {
+        name_chi :'Raw Meat-Thylacoleo',
         food: 50,
         affinity: 10
     },
     'Cooked Meat': {
+        name_chi : '熟肉',
         food: 25,
         affinity: 25
     },
     'Cooked Meat-Daeodon': {
+        name_chi : 'Cooked Meat-Daeodon',
         food: 25,
         affinity: 5
     },
     'Cooked Meat-Thylacoleo': {
+        name_chi : 'Cooked Meat-Thylacoleo',
         food: 25,
         affinity: 20
     },
     'Meat Jerky': {
+        name_chi : '肉干',
         food: 25,
         affinity: 25
     },
     'Prime Meat': {
+        name_chi : '大腿肉',
         food: 50,
         affinity: 150
     },
     'Prime Meat-Compsognathus': {
+        name_chi : 'Prime Meat-Compsognathus',
         food: 20,
         affinity: 600
     },
@@ -85,6 +99,7 @@ $scope.foods = {
         affinity: 20
     },
     'C/J Prime': {
+        name_chi : '煮熟/风干 大腿肉',
         food: 50,
         affinity: 75
     },
@@ -97,10 +112,12 @@ $scope.foods = {
         affinity: 35
     },
     'Spoiled Meat': {
+        name_chi : '腐肉',
         food: 50,
         affinity: 100
     },
     'Mutton': {
+        name_chi : '羊肉',
         food: 50,
         affinity: 187.5
     },
@@ -117,6 +134,7 @@ $scope.foods = {
         affinity: 25
     },
     'Lamb Chop': {
+        name_chi : '熟羊肉',
         food: 49.945,
         affinity: 101.25
     },
@@ -129,22 +147,27 @@ $scope.foods = {
         affinity: 47.25
     },
     'Raw Fish': {
+        name_chi : '生鱼肉',
         food: 25,
         affinity: 20
     },
     'Cooked Fish': {
+        name_chi : '熟鱼肉',
         food: 25,
         affinity: 10
     },
     'Prime Fish': {
+        name_chi : '精英鱼肉',
         food: 25,
         affinity: 60
     },
     'Cooked Prime Fish': {
+        name_chi : '熟精英鱼肉',
         food: 25,
         affinity: 30
     },
     'Kibble-Generic': {
+        name_chi : '普通饲料',
         food: 79.98,
         affinity: 400
     },
@@ -181,14 +204,17 @@ $scope.foods = {
         affinity: 400
     },
     'Crop': {
+        name_chi : '农作物',
         food: 40,
         affinity: 40
     },
     'Rare Mushroom': {
+        name_chi : '稀有蘑菇',
         food: 75,
         affinity: 90
     },
     'Plant Species X Seed': {
+        name_chi : 'X异种种子',
         food: 50,
         affinity: 45
     },
@@ -245,10 +271,12 @@ $scope.foods = {
         affinity: 1500.0
     },
     'Rare Flower': {
+        name_chi : '稀有花朵',
         food: 34.9995,
         affinity: 200
     },
     'Honey-Direbear': {
+        name_chi : '恐熊蜂蜜',
         food: 80,
         affinity: 400
     }
