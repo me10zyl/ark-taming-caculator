@@ -9,7 +9,7 @@
             <div class="list">
                 <div class="row">
                     <label>倍率：</label>
-                    <select v-model="creature.usertamingmultiplier">
+                    <select v-model="creature.usertamingmultiplier" @change="onChangeUserTamingMul">
                         <option value="3">官服毁灭服(3倍)</option>
                         <option value="1">官服(1倍)</option>
                     </select>
@@ -46,7 +46,7 @@
             </div>
             <div class="list-table">
                 <div class="row" v-for="ko in creature.kos" v-bind:key="ko.komethod">
-                    <label>{{ko.komethod}}</label>
+                    <label>{{ko.komethod_chi}}</label>
                     <span v-if="ko.koquantities.Head">
                         头 : {{ko.koquantities.Head}}
                     </span>
@@ -96,24 +96,17 @@
                 </h3>
             </div>
             <div class="list">
-                <div class="row primary">
+                <div class="row">
                     清醒与麻醉时间差：{{creature.differenceStr}}
                 </div>
-                <div class="row primary">
-                    <ul>
-                        <li>喂麻药时间：00:50:00 (2019-07-08 17:30:41)</li>
-                        <li>喂麻药时间：00:50:00 (2019-07-08 17:30:41)</li>
-                        <li>喂麻药时间：00:50:00 (2019-07-08 17:30:41)</li>
+                <div class="row primary" style="font-size: 14px">
+                    <ul v-for="refillTime in creature.refillTimes">
+                        <li>喂麻药时间：{{refillTime.refillTimeStr}}
+                        <span v-for="narcotics in refillTime.narcotics" style="margin-left: 2px">
+                            <span>({{narcotics.name}}<span style="color: darkred"> {{narcotics.amount}} </span>个)</span>
+                        </span>
+                        </li>
                     </ul>
-                </div>
-                <div class="row primary">
-                    每次喂多少个麻药（或）：
-                    <div>
-                        黑果子1个
-                    </div>
-                    <div>
-                        麻药1个
-                    </div>
                 </div>
             </div>
         </div>
@@ -142,7 +135,9 @@
                     foods: [],
                     knockout: null,
                     name_chi: null,
-                    food: 'Raw Meat'
+                    food: 'Raw Meat',
+                    usertamingmultiplier : 1
+
                 },
                 creatures: []
             }
@@ -170,6 +165,7 @@
                             if (!option.name_chi || !this.creatureName) {
                                 return false;
                             }
+                            if(this.creature != null)
                             return option.name_chi.toLowerCase().indexOf(this.creatureName.toLowerCase()) > -1;
                         })
                     }
@@ -182,8 +178,10 @@
             },
             onSelected(item) {
                 let oldLevel = this.creature.level;
+                let oldUserMul = this.creature.usertamingmultiplier
                 this.creature = item.item
                 this.creature.level = oldLevel;
+                this.creature.usertamingmultiplier = oldUserMul;
                 console.log($scope)
                 this.arkSelectLevel()
                 console.log(this.creature)
@@ -203,13 +201,21 @@
             },
             onClickFood ( food){
                 this.arkFoodCalc();
-
             },
             onChangeLevel(e){
+              console.log(this.creature.level)
               this.arkSelectLevel()
+                console.log(this.creature)
+            },
+            onChangeUserTamingMul(){
+                this.arkSelectLevel()
             },
             arkSelectLevel(){
+                console.log('select level')
                 let creature = this.creature;
+                if(creature.name == null){
+                    return null;
+                }
                 if (creature.level > 2000) {
                     creature.level = 2000;
                 }
@@ -222,7 +228,7 @@
                 creature.torpor = creaturedata.basetorpor + creaturedata.basetorpor * creaturedata.torporperlevel * (creature.level - 1);
                 creature.torporrate = creaturedata.basetorporrate + Math.pow(creature.level - 1, $scope.texponent) / ($scope.tcoefficient / creaturedata.basetorporrate);
 
-                creature.usertamingmultiplier = 1;
+                //creature.usertamingmultiplier = 1;
                 creature.tamingmultiplier = 1;
                 creature.foodratemultiplier=  1;
 
@@ -244,6 +250,7 @@
                     let komethod = $scope.komethods[method];
                     let $ko = Object.assign({}, $scope.ko);
                     $ko.komethod = method;
+                    $ko.komethod_chi = komethod.name_chi;
                     //var komethod = $scope.komethods[$scope.ko.komethod];
                     $ko.koquantities = {};
 
@@ -345,20 +352,64 @@
                     //$scope.narcoticstimingcalc();
                     narcoticss.push($narcotics)
                 }
-                this.creature.narcoticss = narcoticss;
+                //this.creature.narcoticss = narcoticss;
+                this.$set(this.creature, 'narcoticss', narcoticss)
                 this.creature.buffertime = narcoticss[0].buffertime;
+            },
+            arkCalcMazui : function(torpor){
+                let mazui = []
+                for(let narcoticsmethodname in $scope.narcoticsmethods){
+                    let narcoticsmethod = $scope.narcoticsmethods[narcoticsmethodname];
+                    mazui.push({ amount : Math.ceil(torpor / narcoticsmethod.torpor), name : narcoticsmethodname });
+                }
+                return mazui;
             },
             arkFinalCalc : function(){
                 let creature = this.creature;
                 let difference = creature.totaltime - creature.buffertime;
                 creature.difference = difference;
-                creature.differenceStr = toHHMMSS(difference);
-                let mazui = []
-                for(let narcoticsmethodname in $scope.narcoticsmethods){
-                    let narcoticsmethod = $scope.narcoticsmethods[narcoticsmethodname];
-                    mazui.push({ amount : creature.difference * -creature.torporrate / narcoticsmethod.torpor, name : 'narcoticsmethodname' });
+                if(creature.difference < 0){
+                    creature.differenceStr = '无需喂麻药';
+                    creature.refillTimes = [];
+                    return;
                 }
-                creature.mazui = mazui;
+                creature.differenceStr = toHHMMSS(difference);
+
+                let requireTorpor = creature.difference * -creature.torporrate;
+                let refillTimes = [];
+                let mazui = this.arkCalcMazui(requireTorpor);
+                if(requireTorpor < creature.torpor){
+                    let refillTime = (creature.torpor - requireTorpor) / -creature.torporrate
+                    refillTimes.push({
+                        refillTime : refillTime,
+                        refillTimeStr : toHHMMSS(refillTime),
+                        narcotics : mazui
+                    })
+                }else{
+                    let leftTorpor = creature.torpor;
+                    while(true){
+                        let calcTorpor = (leftTorpor - -creature.torporrate * 5 * 60)
+                        if(calcTorpor <= 0){
+                            break;
+                        }
+                        let rfTime = calcTorpor / -creature.torporrate;
+                        refillTimes.push({
+                            refillTime : rfTime,
+                            refillTimeStr : toHHMMSS(rfTime),
+                            narcotics : this.arkCalcMazui(calcTorpor)
+                        })
+                        leftTorpor = leftTorpor - calcTorpor;
+                    }
+                    if(leftTorpor > 0){
+                        let refillTime = leftTorpor / -creature.torporrate;
+                        refillTimes.push({
+                            refillTime : refillTime,
+                            refillTimeStr : toHHMMSS(refillTime),
+                            narcotics : this.arkCalcMazui(leftTorpor)
+                        })
+                    }
+                }
+                creature.refillTimes = refillTimes;
             }
         }
 
@@ -434,6 +485,7 @@
     }
 
     .start {
+        margin-top: 20px;
         text-align: center;
     }
 

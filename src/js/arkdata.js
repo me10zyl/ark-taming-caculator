@@ -262,6 +262,7 @@ $scope.komethods = {
         'Longneck': 26*6+26*2.5*/
 
     'Slingshot': {
+        name_chi : '弹弓',
         damagetypes: [
             "DmgType_ProjectileWithImpactFX_DoubleTorp",
             "DmgType_ProjectileWithImpactFX",
@@ -274,6 +275,7 @@ $scope.komethods = {
         time: 0
     },
     'Bow': {
+        name_chi : '弓',
         damagetypes: [
             "DmgType_ProjectileWithImpactFX_Tranq",
             "DmgType_ProjectileWithImpactFX",
@@ -287,6 +289,7 @@ $scope.komethods = {
     },
 
     'Crossbow': {
+        name_chi : '十字弩',
         damagetypes: [
             "DmgType_ProjectileWithImpactFX_Tranq",
             "DmgType_ProjectileWithImpactFX",
@@ -300,6 +303,7 @@ $scope.komethods = {
     },
 
     'Longneck': {
+        name_chi :'长管步枪',
         damagetypes: [
             "DmgType_ProjectileWithImpactFX_TranqMore",
             "DmgType_ProjectileWithImpactFX",
@@ -312,6 +316,7 @@ $scope.komethods = {
         time: 5
     },
     'Fists': {
+        name_chi :'拳头',
         damagetypes: [
             "DmgType_Melee_Torpidity_SelfHurt",
             "DmgType_Melee_Torpidity_StoneWeapon",
@@ -326,6 +331,7 @@ $scope.komethods = {
         time: 0
     },
     'Club': {
+        name_chi :'棒子',
         damagetypes: [
             "DmgType_Melee_HighTorpidity_StoneWeapon_Club",
             "DmgType_Melee_HighTorpidity_StoneWeapon",
@@ -341,6 +347,7 @@ $scope.komethods = {
         time: 0
     },
     'Electric Prod': {
+        name_chi :'电击棒',
         damagetypes: [
             "DmgType_Melee_Human_ElectricStun",
             "DmgType_Melee_Human",
@@ -353,6 +360,7 @@ $scope.komethods = {
         time: 0
     },
     'Scorpion': {
+        name_chi : '巨蝎',
         damagetypes: [
             "DmgType_Melee_TorpPoison",
             "DmgType_Melee_Dino_Carnivore_Small",
@@ -367,6 +375,7 @@ $scope.komethods = {
         time: 10
     },
     'Beelzebufo (Main)': {
+        name_chi : '魔鬼蛙(主攻击)',
         damagetypes: [
             "DmgType_Melee_TorpPoison_ChitinPaste",
             "DmgType_Melee_TorpPoison",
@@ -382,6 +391,7 @@ $scope.komethods = {
         time: 10
     },
     'Beelzebufo (Secondary)': {
+        name_chi : '魔鬼蛙(副攻击)',
         damagetypes: [
             "DmgType_Melee_TorpPoison_ChitinPaste",
             "DmgType_Melee_TorpPoison",
@@ -397,6 +407,7 @@ $scope.komethods = {
         time: 10
     },
     'Pachy (Normal)': {
+        name_chi : '肿头龙(普通攻击)',
         damagetypes: [
             "DmgType_Melee_Dino_Herbivore_Small_LargeTorp",
             "DmgType_Melee_Dino_Herbivore_Small",
@@ -411,6 +422,7 @@ $scope.komethods = {
         time: 0
     },
     'Pachy (Charge)': {
+        name_chi : '肿头龙(蓄力攻击)',
         damagetypes: [
             "DmgType_Melee_Dino_Herbivore_Small_HugeTorp",
             "DmgType_Melee_Dino_Herbivore_Small",
@@ -429,11 +441,13 @@ $scope.komethods = {
 
 $scope.narcoticsmethods = {
     "Narcotics": {
+        name_chi : '麻醉药',
         torpor: 40,
         time: 8,
         rate: 5
     },
     "Narcoberries": {
+        name_chi : '黑果子',
         torpor: 7.5,
         time: 3,
         rate: 2.5
