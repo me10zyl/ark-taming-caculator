@@ -17,7 +17,7 @@
                         <option value="1">官服(1倍)</option>
                     </select>
                 </div>
-                <div class="row">
+                <div class="row" style="position: relative">
                     <label>生物：</label>
                     <div class="input autosuggest-container">
                         <vue-autosuggest
@@ -35,7 +35,7 @@
                             </template>
                         </vue-autosuggest>
                     </div>
-                    <span style="font-size: 10px"  v-if="creature.name">
+                    <span style="font-size: 10px;position: absolute; right:80px;top:6px"  v-if="creature.name">
                         <a :href="dododexUrl" target="_blank" id="dododexUrl">dododex</a>
                     </span>
                 </div>
@@ -107,28 +107,30 @@
                     总结
                 </h3>
             </div>
-            <div class="list">
+            <div class="list-table">
                 <div class="row">
-                    清醒与麻醉时间差：{{creature.differenceStr}}
+                    <span>清醒与麻醉时间差：</span>
+                    <span>
+                        {{creature.differenceStr}}
+                    </span>
                 </div>
-                <div class="row primary" style="font-size: 14px">
-                    <ul v-for="refillTime in creature.refillTimes">
-                        <li>喂麻药时间：{{refillTime.refillTimeStr}}
-                        <span v-for="narcotics in refillTime.narcotics" style="margin-left: 2px">
+                <div class="row primary" style="font-size: 14px;" v-for="refillTime in creature.refillTimes">
+                            <span>喂麻药时间:{{refillTime.refillTimeStr}}</span>
+                            <span v-if="refillTime.dateStr" ><span style="color:#ff0064">{{refillTime.dateStr}}</span></span>
+                            <span v-for="narcotics in refillTime.narcotics" style="margin-left: 2px">
                             <span>({{narcotics.name_chi}}<span style="color: darkred"> {{narcotics.amount}} </span>个)</span>
-                        </span>
-                        </li>
-                    </ul>
+                              </span>
                 </div>
             </div>
         </div>
         <div class="start"  v-if="creature.tamingmethod == 'Standard'">
-            <button>开始驯服</button>
+            <button @click="startTame">开始驯服</button>
         </div>
     </div>
 </template>
 
 <script>
+    import Vue from 'vue'
     import $scope from '@/js/arkdata.js';
     import '@/js/ark.js';
     import dinos from '@/js/dinos.js'
@@ -231,6 +233,45 @@
             },
             onChangeUserTamingMul(){
                 this.arkSelectLevel()
+            },
+            startTame(){
+               /* this.creature = this.creature;
+                this.creature.refillTimes = [];
+                this.$set(this.creature, 'refillTimes', [{
+                    refillTime : 111,
+                    refillTimeStr : toHHMMSS(111),
+                    narcotics : null,
+                    date : new Date()
+                }]);;*/
+                this.creature.startTameDate = new Date()
+                let self = this;
+                if(this.creature.refillTimes.length > 0) {
+                    let prev = this.creature.startTameDate;
+                    for(var i in  this.creature.refillTimes){
+                        let t = this.creature.refillTimes[i];
+                        t.date = new Date(prev.getTime() + t.refillTime * 1000);
+                        t.dateStr = formatTimeToStr(t.date);
+                        Vue.set(this.creature.refillTimes, i, t);
+                        prev = t.date;
+                    }
+
+                    this.creature = Object.assign({}, this.creature);
+/*
+                    this.$set(this.creature, 'refillTimes', [{
+                        refillTime : 111,
+                        refillTimeStr : toHHMMSS(111),
+                        narcotics : null,
+                        date : new Date()
+                    }]);*/
+                    //let reserve = Object.assign([], this.creature.refillTimes);
+                    //this.creature.refillTimes.splice(0)
+                    //this.$set(this.creature, 'refillTimes', this.creature.refillTimes)
+                    /*reserve.forEach(e=>{
+                        this.creature.refillTimes.push(e);
+                    })*/
+
+                }
+                console.log(this.creature)
             },
             arkSelectLevel(){
                 console.log('select level')
@@ -455,7 +496,7 @@
 <style scoped>
     #main {
         background: linear-gradient(rgba(40, 100, 100, 0.6), rgba(40, 100, 100, 0.3));
-        width: 500px;
+        width: 650px;
         /*display: table;*/
         /*text-align: center;*/
         /*border-width: 2px;
@@ -482,8 +523,9 @@
 
     .list .row{
         padding: 0 20px;
-        width: 380px;
+        width: 550px;
         margin: 2px 0;
+        text-align: center;
     }
 
     .list-table .row>*{
