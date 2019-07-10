@@ -147,7 +147,7 @@
                     knockout: null,
                     name_chi: null,
                     food: 'Raw Meat',
-                    usertamingmultiplier : 1
+                    usertamingmultiplier : 3
 
                 },
                 creatures: []
