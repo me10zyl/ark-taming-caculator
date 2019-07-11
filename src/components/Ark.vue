@@ -67,7 +67,7 @@
                 <h3>
                     食物详情
                     <span v-if="this.creature.tamingmethod == 'Non-Violent'">
-                        (非暴力驯服)
+                        (非暴力驯服 - 由于数据不准，仅供参考， 请参照<a :href="dododexUrl" target="_blank" id="dododexUrl2">DODODEX</a>上的详细信息)
                     </span>
                 </h3>
             </div>
@@ -234,6 +234,7 @@
                 this.arkSelectLevel()
                 this.$set(this.creature, 'level', this.creature.level)
                 document.getElementById('dododexUrl').href = 'https://www.dododex.com/taming/' + this.creature.dododexName + '/' + this.creature.level;
+                document.getElementById('dododexUrl2').href = 'https://www.dododex.com/taming/' + this.creature.dododexName + '/' + this.creature.level;
             },
             onChangeUserTamingMul() {
                 this.arkSelectLevel()
