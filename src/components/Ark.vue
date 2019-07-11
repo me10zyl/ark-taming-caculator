@@ -35,7 +35,7 @@
                             </template>
                         </vue-autosuggest>
                     </div>
-                    <span style="font-size: 10px;position: absolute; right:80px;top:6px"  v-if="creature.name">
+                    <span style="font-size: 10px;position: absolute; right:80px;top:6px" v-if="creature.name">
                         <a :href="dododexUrl" target="_blank" id="dododexUrl">dododex</a>
                     </span>
                 </div>
@@ -115,15 +115,16 @@
                     </span>
                 </div>
                 <div class="row primary" style="font-size: 14px;" v-for="refillTime in creature.refillTimes">
-                            <span>喂麻药时间:{{refillTime.refillTimeStr}}</span>
-                            <span v-if="refillTime.dateStr" ><span style="color:#ff0064">{{refillTime.dateStr}}</span></span>
-                            <span v-for="narcotics in refillTime.narcotics" style="margin-left: 2px">
-                            <span>({{narcotics.name_chi}}<span style="color: darkred"> {{narcotics.amount}} </span>个)</span>
+                    <span>喂麻药时间:{{refillTime.refillTimeStr}}</span>
+                    <span v-if="refillTime.dateStr"><span style="color:#ff0064">{{refillTime.dateStr}}</span></span>
+                    <span v-for="narcotics in refillTime.narcotics" style="margin-left: 2px">
+                            <span>({{narcotics.name_chi}}<span
+                                    style="color: darkred"> {{narcotics.amount}} </span>个)</span>
                               </span>
                 </div>
             </div>
         </div>
-        <div class="start"  v-if="creature.tamingmethod == 'Standard'">
+        <div class="start" v-if="creature.tamingmethod == 'Standard'">
             <button @click="startTame">开始驯服</button>
         </div>
     </div>
@@ -152,7 +153,7 @@
                     knockout: null,
                     name_chi: null,
                     food: 'Raw Meat',
-                    usertamingmultiplier : 3
+                    usertamingmultiplier: 3
 
                 },
                 creatures: []
@@ -175,8 +176,8 @@
             $rootScope.pagetitle = "ARK Taming Calculator";*/
         },
         computed: {
-            dododexUrl(){
-              return 'https://www.dododex.com/taming/' + this.creature.dododexName + '/' + this.creature.level;
+            dododexUrl() {
+                return 'https://www.dododex.com/taming/' + this.creature.dododexName + '/' + this.creature.level;
             },
             filteredOptions() {
                 return [
@@ -185,8 +186,8 @@
                             if (!option.name_chi || !this.creatureName) {
                                 return false;
                             }
-                            if(this.creature != null)
-                            return option.name_chi.toLowerCase().indexOf(this.creatureName.toLowerCase()) > -1;
+                            if (this.creature != null)
+                                return option.name_chi.toLowerCase().indexOf(this.creatureName.toLowerCase()) > -1;
                         })
                     }
                 ];
@@ -219,35 +220,35 @@
             focusMe(e) {
                 //console.log(e) // FocusEvent
             },
-            onClickFood (food){
+            onClickFood(food) {
                 this.creature.food = food.name;
                 this.arkFoodCalc();
                 this.arkNarcoticsCalc();
                 this.arkFinalCalc();
             },
-            onChangeLevel(e){
-              console.log(this.creature.level)
-              this.arkSelectLevel()
-              this.$set(this.creature, 'level', this.creature.level)
-              document.getElementById('dododexUrl').href = 'https://www.dododex.com/taming/' + this.creature.dododexName + '/' + this.creature.level;
+            onChangeLevel(e) {
+                console.log(this.creature.level)
+                this.arkSelectLevel()
+                this.$set(this.creature, 'level', this.creature.level)
+                document.getElementById('dododexUrl').href = 'https://www.dododex.com/taming/' + this.creature.dododexName + '/' + this.creature.level;
             },
-            onChangeUserTamingMul(){
+            onChangeUserTamingMul() {
                 this.arkSelectLevel()
             },
-            startTame(){
-               /* this.creature = this.creature;
-                this.creature.refillTimes = [];
-                this.$set(this.creature, 'refillTimes', [{
-                    refillTime : 111,
-                    refillTimeStr : toHHMMSS(111),
-                    narcotics : null,
-                    date : new Date()
-                }]);;*/
+            startTame() {
+                /* this.creature = this.creature;
+                 this.creature.refillTimes = [];
+                 this.$set(this.creature, 'refillTimes', [{
+                     refillTime : 111,
+                     refillTimeStr : toHHMMSS(111),
+                     narcotics : null,
+                     date : new Date()
+                 }]);;*/
                 this.creature.startTameDate = new Date()
                 let self = this;
-                if(this.creature.refillTimes.length > 0) {
+                if (this.creature.refillTimes.length > 0) {
                     let prev = this.creature.startTameDate;
-                    for(var i in  this.creature.refillTimes){
+                    for (var i in  this.creature.refillTimes) {
                         let t = this.creature.refillTimes[i];
                         t.date = new Date(prev.getTime() + t.refillTime * 1000);
                         t.dateStr = formatTimeToStr(t.date);
@@ -256,13 +257,13 @@
                     }
 
                     this.creature = Object.assign({}, this.creature);
-/*
-                    this.$set(this.creature, 'refillTimes', [{
-                        refillTime : 111,
-                        refillTimeStr : toHHMMSS(111),
-                        narcotics : null,
-                        date : new Date()
-                    }]);*/
+                    /*
+                                        this.$set(this.creature, 'refillTimes', [{
+                                            refillTime : 111,
+                                            refillTimeStr : toHHMMSS(111),
+                                            narcotics : null,
+                                            date : new Date()
+                                        }]);*/
                     //let reserve = Object.assign([], this.creature.refillTimes);
                     //this.creature.refillTimes.splice(0)
                     //this.$set(this.creature, 'refillTimes', this.creature.refillTimes)
@@ -273,11 +274,11 @@
                 }
                 console.log(this.creature)
             },
-            arkSelectLevel(){
+            arkSelectLevel() {
                 console.log('select level')
                 let creature = this.creature;
                 document.getElementsByTagName('title')[0].textContent = creature.name_chi + " " + creature.level + ' - yilnz\'s 方舟驯服计算器'
-                if(creature.name == null){
+                if (creature.name == null) {
                     return null;
                 }
                 if (creature.level > 2000) {
@@ -294,7 +295,7 @@
 
                 //creature.usertamingmultiplier = 1;
                 creature.tamingmultiplier = 1;
-                creature.foodratemultiplier=  1;
+                creature.foodratemultiplier = 1;
 
                 creature.tamingmultiplier = creature.usertamingmultiplier * $scope.basetamingmultiplier;
 
@@ -303,9 +304,9 @@
                 creature.food = creature.basefood
 
                 let dododexName = dododexNames[creature.name];
-                if(dododexName){
+                if (dododexName) {
                     creature.dododexName = dododexName.dododexName;
-                }else {
+                } else {
                     creature.dododexName = creature.name.replace(' ', '').toLowerCase()
                 }
                 this.arkKoCalc();
@@ -317,7 +318,7 @@
             },
             arkKoCalc() {
                 let kos = [];
-                for(let method in $scope.komethods){
+                for (let method in $scope.komethods) {
                     let komethod = $scope.komethods[method];
                     let $ko = Object.assign({}, $scope.ko);
                     $ko.komethod = method;
@@ -354,7 +355,7 @@
 
                 this.creature.kos = kos;
             },
-            arkMaxFoodCalc : function(){
+            arkMaxFoodCalc: function () {
                 let creature = this.creature;
                 this.creature.maxfoodamounts = {};
                 if (this.creature.tamingmethod == "Standard") {
@@ -374,15 +375,15 @@
                 }
 
                 this.creature.foods2 = [];
-                this.creature.foods.forEach(f=>{
+                this.creature.foods.forEach(f => {
                     this.creature.foods2.push({
-                        name : f,
-                        maxfoodamount : this.creature.maxfoodamounts[f],
+                        name: f,
+                        maxfoodamount: this.creature.maxfoodamounts[f],
                         name_chi: $scope.foods[f].name_chi ? $scope.foods[f].name_chi : f
                     })
                 })
             },
-            arkAllTimeCalc : function(){
+            arkAllTimeCalc: function () {
                 let creature = this.creature;
                 creature.times = {};
 
@@ -397,20 +398,20 @@
                     creature.times[food] = creature.maxfoodamounts[food] * -$scope.foods[food].food / creature.foodrate;
                 }
 
-                this.creature.foods.forEach((f, index)=>{
+                this.creature.foods.forEach((f, index) => {
                     let foods2Element = this.creature.foods2[index];
                     foods2Element.time = creature.times[f];
                     foods2Element.timeStr = toHHMMSS(foods2Element.time);
                 })
             },
-            arkFoodCalc : function(){
-                this.creature.totaltime =  this.creature.times[this.creature.food]
+            arkFoodCalc: function () {
+                this.creature.totaltime = this.creature.times[this.creature.food]
                 this.$set(this.creature, 'totaltimeStr', toHHMMSS(this.creature.totaltime))
                 console.log(this.creature.totaltimeStr)
             },
-            arkNarcoticsCalc : function(){
+            arkNarcoticsCalc: function () {
                 let narcoticss = [];
-                for(let narcoticsmethodname in $scope.narcoticsmethods){
+                for (let narcoticsmethodname in $scope.narcoticsmethods) {
                     let $narcotics = Object.assign({}, $scope.narcotics)
                     var narcoticsmethod = $scope.narcoticsmethods[narcoticsmethodname];
                     $narcotics.buffertime = this.creature.torpor / -this.creature.torporrate;
@@ -427,23 +428,27 @@
                 this.$set(this.creature, 'narcoticss', narcoticss)
                 this.creature.buffertime = narcoticss[0].buffertime;
             },
-            arkCalcMazui : function(torpor){
+            arkCalcMazui: function (torpor) {
                 let mazui = []
-                for(let narcoticsmethodname in $scope.narcoticsmethods){
+                for (let narcoticsmethodname in $scope.narcoticsmethods) {
                     let narcoticsmethod = $scope.narcoticsmethods[narcoticsmethodname];
-                    mazui.push({ amount : Math.ceil(torpor / narcoticsmethod.torpor), name : narcoticsmethodname, name_chi : $scope.narcoticsmethods[narcoticsmethodname].name_chi});
+                    mazui.push({
+                        amount: Math.ceil(torpor / narcoticsmethod.torpor),
+                        name: narcoticsmethodname,
+                        name_chi: $scope.narcoticsmethods[narcoticsmethodname].name_chi
+                    });
                 }
                 mazui = mazui.reverse();
                 return mazui;
             },
-            arkFinalCalc : function(){
+            arkFinalCalc: function () {
                 let creature = this.creature;
                 let difference = creature.totaltime - creature.buffertime;
                 creature.difference = difference;
-                if(isNaN(difference)){
+                if (isNaN(difference)) {
                     return
                 }
-                if(creature.difference < 0){
+                if (creature.difference < 0) {
                     creature.differenceStr = '无需喂麻药';
                     creature.refillTimes = [];
                     return;
@@ -453,37 +458,59 @@
                 let requireTorpor = creature.difference * -creature.torporrate;
                 let refillTimes = [];
                 let mazui = this.arkCalcMazui(requireTorpor);
-                if(creature.difference < creature.buffertime){
-                    let refillTime = (creature.torpor - requireTorpor) / -creature.torporrate
+                // if(creature.difference < creature.buffertime){
+                let refillTime = (creature.torpor - requireTorpor) / -creature.torporrate
+                if (creature.buffertime < creature.difference) {
+                    let leftTime = creature.difference;
+                    while (leftTime > 0) {
+                        let beforeLeftTime = leftTime;
+                        leftTime = leftTime - (creature.buffertime - 5 * 60)
+                        if (leftTime < 0) {
+                            refillTimes.push({
+                                refillTime: beforeLeftTime,
+                                refillTimeStr: toHHMMSS(beforeLeftTime),
+                                narcotics: this.arkCalcMazui(beforeLeftTime * -creature.torporrate)
+                            })
+                            break;
+                        }
+                        refillTimes.push({
+                            refillTime: (creature.buffertime - 5 * 60),
+                            refillTimeStr: toHHMMSS((creature.buffertime - 5 * 60)),
+                            narcotics: this.arkCalcMazui((creature.buffertime - 5 * 60) * -creature.torporrate)
+                        })
+                    }
+
+                } else {
+                    refillTimes.push({
+                        refillTime: refillTime,
+                        refillTimeStr: toHHMMSS(refillTime),
+                        narcotics: mazui
+                    })
+                }
+                // }else{
+                /*let leftTorpor = creature.torpor;
+                while(true){
+                        let calcTorpor = (leftTorpor - requireTorpor - -creature.torporrate * 5 * 60)
+                    if(calcTorpor <= 0){
+                        break;
+                    }
+                    let rfTime = calcTorpor / -creature.torporrate;
+                    refillTimes.push({
+                        refillTime : rfTime,
+                        refillTimeStr : toHHMMSS(rfTime),
+                        narcotics : this.arkCalcMazui(calcTorpor)
+                    })
+                    leftTorpor = requireTorpor - calcTorpor;
+                }
+                if(leftTorpor > 0){
+                    let refillTime = leftTorpor / -creature.torporrate;
                     refillTimes.push({
                         refillTime : refillTime,
                         refillTimeStr : toHHMMSS(refillTime),
-                        narcotics : mazui
+                        narcotics : this.arkCalcMazui(leftTorpor)
                     })
-                }else{
-                    let leftTorpor = requireTorpor;
-                    while(true){
-                        let calcTorpor = (leftTorpor - -creature.torporrate * 5 * 60)
-                        if(calcTorpor <= 0){
-                            break;
-                        }
-                        let rfTime = calcTorpor / -creature.torporrate;
-                        refillTimes.push({
-                            refillTime : rfTime,
-                            refillTimeStr : toHHMMSS(rfTime),
-                            narcotics : this.arkCalcMazui(calcTorpor)
-                        })
-                        leftTorpor = leftTorpor - calcTorpor;
-                    }
-                    if(leftTorpor > 0){
-                        let refillTime = leftTorpor / -creature.torporrate;
-                        refillTimes.push({
-                            refillTime : refillTime,
-                            refillTimeStr : toHHMMSS(refillTime),
-                            narcotics : this.arkCalcMazui(leftTorpor)
-                        })
-                    }
-                }
+                }*/
+                // }
                 creature.refillTimes = refillTimes;
             }
         }
@@ -521,19 +548,19 @@
         display: table-row;
     }
 
-    .list .row{
+    .list .row {
         padding: 0 20px;
         width: 550px;
         margin: 2px 0;
         text-align: center;
     }
 
-    .list-table .row>*{
+    .list-table .row > * {
         display: table-cell;
         padding: 5px;
     }
 
-    .list-table{
+    .list-table {
         display: table;
         margin: 0 auto;
     }
