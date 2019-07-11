@@ -113,6 +113,9 @@
                     <span>
                         {{creature.differenceStr}}
                     </span>
+                    <span v-if="creature.waitTimeStr" style="color:#ff0064">
+                        {{creature.waitTimeStr}}
+                    </span>
                 </div>
                 <div class="row primary" style="font-size: 14px;" v-for="refillTime in creature.refillTimes">
                     <span>喂麻药时间:{{refillTime.refillTimeStr}}</span>
@@ -270,6 +273,11 @@
                     /*reserve.forEach(e=>{
                         this.creature.refillTimes.push(e);
                     })*/
+
+                }else{
+                    console.log(this.creature.totaltime)
+                    this.creature.waitTime = new Date(this.creature.startTameDate.getTime() + this.creature.totaltime * 1000);
+                    this.$set(this.creature, 'waitTimeStr' , formatTimeToStr(this.creature.waitTime));
 
                 }
                 console.log(this.creature)
