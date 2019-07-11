@@ -453,7 +453,7 @@
                 let requireTorpor = creature.difference * -creature.torporrate;
                 let refillTimes = [];
                 let mazui = this.arkCalcMazui(requireTorpor);
-                if(requireTorpor < creature.torpor){
+                if(creature.difference < creature.buffertime){
                     let refillTime = (creature.torpor - requireTorpor) / -creature.torporrate
                     refillTimes.push({
                         refillTime : refillTime,
@@ -461,7 +461,7 @@
                         narcotics : mazui
                     })
                 }else{
-                    let leftTorpor = creature.torpor;
+                    let leftTorpor = requireTorpor;
                     while(true){
                         let calcTorpor = (leftTorpor - -creature.torporrate * 5 * 60)
                         if(calcTorpor <= 0){
