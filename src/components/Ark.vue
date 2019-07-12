@@ -129,7 +129,11 @@
         </div>
         <div class="start" v-if="creature.tamingmethod == 'Standard'">
             <button @click="startTame">开始驯服</button>
+            <span style="margin-left: 15px;font-size: 10px">
+                <input type="checkbox" id="bellOption" style="width: inherit;" checked="checked"/>喂麻药闹铃提醒
+            </span>
         </div>
+        <audio src="/bell.mp3" style='display:none' id='bell'></audio>
     </div>
 </template>
 
@@ -234,10 +238,18 @@
                 this.arkSelectLevel()
                 this.$set(this.creature, 'level', this.creature.level)
                 document.getElementById('dododexUrl').href = 'https://www.dododex.com/taming/' + this.creature.dododexName + '/' + this.creature.level;
-                document.getElementById('dododexUrl2').href = 'https://www.dododex.com/taming/' + this.creature.dododexName + '/' + this.creature.level;
+                let elementById = document.getElementById('dododexUrl2');
+                if(elementById) {
+                    elementById.href = 'https://www.dododex.com/taming/' + this.creature.dododexName + '/' + this.creature.level;
+                }
             },
             onChangeUserTamingMul() {
                 this.arkSelectLevel()
+            },
+            duang(){
+                if(document.getElementById('bellOption').checked) {
+                    document.getElementById('bell').play();
+                }
             },
             startTame() {
                 /* this.creature = this.creature;
@@ -248,15 +260,23 @@
                      narcotics : null,
                      date : new Date()
                  }]);;*/
+                //this.duang();
                 this.creature.startTameDate = new Date()
                 let self = this;
                 if (this.creature.refillTimes.length > 0) {
                     let prev = this.creature.startTameDate;
+                    let prevDuang = 0;
                     for (var i in  this.creature.refillTimes) {
                         let t = this.creature.refillTimes[i];
                         t.date = new Date(prev.getTime() + t.refillTime * 1000);
                         t.dateStr = formatTimeToStr(t.date);
                         Vue.set(this.creature.refillTimes, i, t);
+                        if(t.timeout){
+                            clearTimeout(t.timeout);
+                        }
+                        console.log("rfillTime", t.refillTime)
+                        t.timeout = setTimeout(this.duang, prevDuang + t.refillTime * 1000);
+                        prevDuang += t.refillTime * 1000;
                         prev = t.date;
                     }
 
@@ -276,10 +296,12 @@
                     })*/
 
                 }else{
-                    console.log(this.creature.totaltime)
                     this.creature.waitTime = new Date(this.creature.startTameDate.getTime() + this.creature.totaltime * 1000);
                     this.$set(this.creature, 'waitTimeStr' , formatTimeToStr(this.creature.waitTime));
-
+                    if(this.creature.timeout){
+                        clearTimeout(this.creature.timeout);
+                    }
+                    this.creature.timeout = setTimeout(this.duang, this.creature.totaltime * 1000);
                 }
                 console.log(this.creature)
             },
