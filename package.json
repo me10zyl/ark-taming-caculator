@@ -9,27 +9,18 @@
   },
   "dependencies": {
     "axios": "^0.19.2",
-    "core-js": "^2.6.5",
-    "jquery": "^3.5.0",
-    "v-autocomplete": "git+https://github.com/paliari/v-autocomplete.git",
     "vue": "^2.6.10",
     "vue-autosuggest": "^2.0.1",
-    "vue-router": "^3.1.6",
-    "vue2-autocomplete-js": "^0.2.2"
+    "vue-router": "^3.1.6"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.9.0",
-    "@vue/cli-plugin-eslint": "^3.9.0",
     "@vue/cli-service": "^3.9.0",
-    "babel-eslint": "^10.0.1",
-    "eslint": "^5.16.0",
-    "eslint-plugin-vue": "^5.0.0",
     "vue-template-compiler": "^2.6.10"
   },
   "eslintConfig": {
-    "root": true,
+    "root": false,
     "env": {
-      "node": true
+      "node": false
     },
     "extends": [
       "plugin:vue/essential",

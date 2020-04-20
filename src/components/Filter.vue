@@ -4,8 +4,8 @@
 		<hr/>
 		<div v-for="category in categories">
 			<h4>{{category.category}}</h4>
-			<div v-for="item in category">
-				<span>{{item.name}}</span>
+			<div v-for="item in category.items">
+				<span>{{item}}</span>
 				<span><button class="copy">复制</button></span>
 			</div>
 		</div>
@@ -42,7 +42,7 @@
 		name: "Filter",
 		data() {
 			return {
-				categories : items_category
+				categories : items_category,
 				query: "",
 				selected: "",
 				suggestions: [
