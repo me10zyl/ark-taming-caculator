@@ -2,29 +2,10 @@
 	<div>
 		<h1>ARK过滤复制器</h1>
 		<hr/>
-		<div>
-			<h4>衣服：</h4>
-			<div>
-				<span>护</span>
-				<span><button class="copy">复制</button></span>
-			</div>
-			<div>
-				<span>头盔</span>
-				<span><button class="copy">复制</button></span>
-			</div>
-		</div>
-		<div>
-			<h4>垃圾：</h4>
-			<div>
-				<span>布</span>
-				<span><button class="copy">复制</button></span>
-			</div>
-			<div>
-				<span>石制</span>
-				<span><button class="copy">复制</button></span>
-			</div>
-			<div>
-				<span>皮肤</span>
+		<div v-for="category in categories">
+			<h4>{{category.category}}</h4>
+			<div v-for="item in category">
+				<span>{{item.name}}</span>
 				<span><button class="copy">复制</button></span>
 			</div>
 		</div>
@@ -53,6 +34,7 @@
 <script>
 	/* eslint-disable */
 	import items from '@/js/items.js'
+	import items_category from '@/js/category.js'
 	//import $ from 'jquery'
 
 
@@ -60,6 +42,7 @@
 		name: "Filter",
 		data() {
 			return {
+				categories : items_category
 				query: "",
 				selected: "",
 				suggestions: [

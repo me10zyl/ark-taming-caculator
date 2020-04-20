@@ -1,6 +1,6 @@
 export default [{
 	name: "金属",
-	index: "js"
+	index: "js",
 }, {
 	name: "胸甲",
 	index: "xj|yf"
