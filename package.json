@@ -8,7 +8,9 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "axios": "^0.19.2",
     "core-js": "^2.6.5",
+    "jquery": "^3.5.0",
     "v-autocomplete": "git+https://github.com/paliari/v-autocomplete.git",
     "vue": "^2.6.10",
     "vue-autosuggest": "^2.0.1",

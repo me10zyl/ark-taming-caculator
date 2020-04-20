@@ -1,15 +1,15 @@
 import Vue from 'vue'
 import App from './App.vue'
-import Autocomplete from 'v-autocomplete'
+//import Autocomplete from 'v-autocomplete'
 
 // You need a specific loader for CSS files like https://github.com/webpack/css-loader
-import 'v-autocomplete/dist/v-autocomplete.css'
+//import 'v-autocomplete/dist/v-autocomplete.css'
 
-Vue.use(Autocomplete)
-
+//Vue.use(Autocomplete)
 import VueAutosuggest from "vue-autosuggest";
 import VueRouter from 'vue-router';
 import Ark from "./components/Ark";
+import Filter from "./components/Filter";
 
 Vue.use(VueAutosuggest);
 Vue.use(VueRouter)
@@ -17,8 +17,10 @@ Vue.use(VueRouter)
 Vue.config.productionTip = false
 
 const router = new VueRouter({
+	mode: 'history',
 	routes : [
-		{ path: '/', component: Ark }
+		{ path: '/', component: Filter, name: 'filter' },
+		{path : '/taming', component: Ark, name : 'taming'}
 	]
 })
 
