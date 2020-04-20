@@ -2,12 +2,15 @@
 	<div>
 		<h1>ARK过滤复制器</h1>
 		<hr/>
-		<div v-for="category in categories">
-			<h4>{{category.category}}</h4>
-			<div v-for="item in category.items">
-				<span>{{item}}</span>
-				<span><button class="copy">复制</button></span>
-			</div>
+		<div v-for="category in categories" v-bind:style="{display:'inline-block', 'margin-right': '20px', border: '1px solid',
+		'vertical-align':'top', 'color' : category.color, 'float' :'left'}">
+			<table>
+			<th><h4>{{category.category}}</h4></th>
+			<tr v-for="item in category.items">
+				<td>{{item}}</td>
+				<td><button class="copy">复制</button></td>
+			</tr>
+			</table>
 		</div>
 		<hr />
 		<div class="autosuggest-container">
@@ -69,7 +72,7 @@
 			let self = this;
 			input.onblur = function () {
 				if(!self.stopFoucs){
-					document.querySelector('.input input').focus();
+					//document.querySelector('.input input').focus();
 				}
 			}
 			input.addEventListener('keydown', function (e) {
@@ -107,7 +110,7 @@
 				input.innerHTML = text;
 				document.body.appendChild(input);
 				this.stopFoucs = true
-				input.focus()
+				//input.focus()
 				input.select();
 				var result = document.execCommand('copy');
 				console.log(text+" copyed , result: " + result)
