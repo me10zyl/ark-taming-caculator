@@ -1,6 +1,34 @@
 <template>
 	<div>
-		<h1>方舟过滤复制器</h1>
+		<h1>ARK过滤复制器</h1>
+		<hr/>
+		<div>
+			<h4>衣服：</h4>
+			<div>
+				<span>护</span>
+				<span><button class="copy">复制</button></span>
+			</div>
+			<div>
+				<span>头盔</span>
+				<span><button class="copy">复制</button></span>
+			</div>
+		</div>
+		<div>
+			<h4>垃圾：</h4>
+			<div>
+				<span>布</span>
+				<span><button class="copy">复制</button></span>
+			</div>
+			<div>
+				<span>石制</span>
+				<span><button class="copy">复制</button></span>
+			</div>
+			<div>
+				<span>皮肤</span>
+				<span><button class="copy">复制</button></span>
+			</div>
+		</div>
+		<hr />
 		<div class="autosuggest-container">
 			<vue-autosuggest
 					class="input"
@@ -38,7 +66,8 @@
 					{
 						data: items
 					}
-				]
+				],
+				stopFoucs : false
 			};
 		},
 		computed: {
@@ -50,33 +79,43 @@
 				];
 			}
 		},
-		mounted : function() {
+		mounted: function () {
 			let input = document.querySelector('.input input');
 			input.focus();
 			// Force focus
+			let self = this;
 			input.onblur = function () {
-				document.querySelector('.input input').focus();
+				if(!self.stopFoucs){
+					document.querySelector('.input input').focus();
+				}
 			}
-			let $this = this;
-			input.addEventListener('keydown', function(e){
+			input.addEventListener('keydown', function (e) {
 				console.log(e.which)
-				if(e.which == 27 || e.which == 20){
+				if (e.which == 27 || e.which == 20) {
 					input.value = ''
 				}
-				if(e.key.match(/\d/)){
+				if (e.key.match(/\d/)) {
 					e.preventDefault()
-					console.log($this.getFilter())
+					console.log(self.getFilter())
 					document.querySelector('.input input');
 					document.querySelector('.autosuggest__results-container').remove()
 				}
 			})
+
+			let copys = document.querySelectorAll(".copy");
+			for(let i = 0;i < copys.length;i++){
+				copys[i].onclick = function(){
+					let text = this.parentNode.previousSibling.textContent;
+					self.copy(text);
+				}
+			}
 		},
 		methods: {
-			getFilter(){
+			getFilter() {
 				return this.suggestions[0].data.filter(option => {
 					return option.index.toLowerCase().indexOf(this.query.toLowerCase()) > -1;
-				}).map((e, i)=>{
-					e.seq = (i+1);
+				}).map((e, i) => {
+					e.seq = (i + 1);
 					return e;
 				})
 			},
@@ -84,9 +123,14 @@
 				var input = document.createElement('textarea');
 				input.innerHTML = text;
 				document.body.appendChild(input);
+				this.stopFoucs = true
+				input.focus()
 				input.select();
 				var result = document.execCommand('copy');
+				console.log(text+" copyed , result: " + result)
 				document.body.removeChild(input);
+				this.stopFoucs = false
+				document.querySelector('.input input').focus()
 				return result;
 			},
 			clickHandler(item) {
