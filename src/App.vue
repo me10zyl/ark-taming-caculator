@@ -2,18 +2,16 @@
   <div id="app">
     <!--<img alt="Vue logo" src="./assets/logo.png">-->
     <!--<HelloWorld msg="Welcome to Your Vue.js App"/>-->
-    <Ark />
+<!--    <Ark />-->
+	<router-view></router-view>
   </div>
 </template>
 
 <script>
-import Ark from './components/Ark.vue'
-
 export default {
-  name: 'app',
-  components: {
-      Ark
-  }
+	data(){
+		return {}
+	}
 }
 </script>
 

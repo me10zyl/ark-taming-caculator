@@ -8,14 +8,26 @@ import 'v-autocomplete/dist/v-autocomplete.css'
 Vue.use(Autocomplete)
 
 import VueAutosuggest from "vue-autosuggest";
+import VueRouter from 'vue-router';
+import Ark from "./components/Ark";
+
 Vue.use(VueAutosuggest);
+Vue.use(VueRouter)
 
 Vue.config.productionTip = false
 
+const router = new VueRouter({
+	routes : [
+		{ path: '/', component: Ark }
+	]
+})
+
 new Vue({
-  render: h => h(App),
+	el: '#app',
+	router : router,
+	render: h => h(App),
     data : {
-      pageTitle : 'yilnz\'s 方舟驯服计算器'
+      pageTitle : 'yilnz\'s 方舟工具'
     }
-}).$mount('#app')
+});
 

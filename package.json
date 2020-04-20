@@ -12,6 +12,7 @@
     "v-autocomplete": "git+https://github.com/paliari/v-autocomplete.git",
     "vue": "^2.6.10",
     "vue-autosuggest": "^2.0.1",
+    "vue-router": "^3.1.6",
     "vue2-autocomplete-js": "^0.2.2"
   },
   "devDependencies": {
