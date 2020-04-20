@@ -3,12 +3,12 @@
 		<!--<img alt="Vue logo" src="./assets/logo.png">-->
 		<!--<HelloWorld msg="Welcome to Your Vue.js App"/>-->
 		<!--    <Ark />-->
-		<!--<div>
+		<div>
 			<router-link :to="{name:'filter',params:{key:value}}">跳转到过滤复制器</router-link>
 		</div>
 		<div>
 			<router-link :to="{name:'taming',params:{key:value}}">跳转到驯服计算器</router-link>
-		</div>-->
+		</div>
 		<router-view></router-view>
 	</div>
 </template>
