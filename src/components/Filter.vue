@@ -62,10 +62,13 @@
 			input.onblur = function () {
 				document.querySelector('.input input').focus();
 			}
-			document.addEventListener('keyup', function(e){
+			input.addEventListener('keydown', function(e){
 				console.log(e.which)
 				if(e.which == 27 || e.which == 20){
 					input.value = ''
+				}
+				if(e.key.match(/\d/)){
+					e.preventDefault()
 				}
 			})
 		},
