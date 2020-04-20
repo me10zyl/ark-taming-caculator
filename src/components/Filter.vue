@@ -45,12 +45,7 @@
 			filteredOptions() {
 				return [
 					{
-						data: this.suggestions[0].data.filter(option => {
-							return option.index.toLowerCase().indexOf(this.query.toLowerCase()) > -1;
-						}).map((e, i)=>{
-							e.seq = (i+1);
-							return e;
-						})
+						data: this.getFilter()
 					}
 				];
 			}
@@ -62,6 +57,7 @@
 			input.onblur = function () {
 				document.querySelector('.input input').focus();
 			}
+			let $this = this;
 			input.addEventListener('keydown', function(e){
 				console.log(e.which)
 				if(e.which == 27 || e.which == 20){
@@ -69,10 +65,21 @@
 				}
 				if(e.key.match(/\d/)){
 					e.preventDefault()
+					console.log($this.getFilter())
+					document.querySelector('.input input');
+					document.querySelector('.autosuggest__results-container').remove()
 				}
 			})
 		},
 		methods: {
+			getFilter(){
+				return this.suggestions[0].data.filter(option => {
+					return option.index.toLowerCase().indexOf(this.query.toLowerCase()) > -1;
+				}).map((e, i)=>{
+					e.seq = (i+1);
+					return e;
+				})
+			},
 			copy(text) {
 				var input = document.createElement('textarea');
 				input.innerHTML = text;

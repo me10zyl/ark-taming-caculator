@@ -18,5 +18,13 @@ export default [{
 	{
 		name: '泰克',
 		index: "tk"
+	},
+	{
+		name: '地基',
+		index: "dj"
+	},
+	{
+		name: '柱',
+		index: "z"
 	}
 ]
