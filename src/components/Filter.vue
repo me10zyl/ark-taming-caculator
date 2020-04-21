@@ -116,7 +116,7 @@
 				console.log(text+" copyed , result: " + result)
 				document.body.removeChild(input);
 				this.stopFoucs = false
-				document.querySelector('.input input').focus()
+				//document.querySelector('.input input').focus()
 				return result;
 			},
 			clickHandler(item) {

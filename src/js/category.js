@@ -6,7 +6,7 @@ export default [
     {
         category : "垃圾",
         color : '#FF00FF',
-        items : ['布', '石制', '皮肤','石镐','弓','长矛','配方', '稀有']
+        items : [ '皮肤','时装','奖杯', '服装', "种子", '植入体', '布', '石制','石镐','弓','长矛','配方', '稀有']
     },{
         category :"基础工具",
         color : '#FF00FF',
@@ -15,16 +15,16 @@ export default [
     {
         category : "基础资源",
         color : '#FF0000',
-        items : ['石头', '金属', '茅草','燧石', '纤维', '油', '水晶', '兽皮', '硅珍珠', '毛皮','甲壳','角质']
+        items : ['石头', '金属', '茅草','燧石', '纤维', '油', '水晶', '兽皮', '硅珍珠', '毛皮','甲壳','角质', '黑曜石']
     },
     {
         category : "二级资源",
         color : '#FF0000',
-        items : ['水泥', '引火粉', '电子元件', '聚合物', 'paste','powder']
+        items : ['金属锭','水泥', '煤炭', '引火粉', '火药', '电路元件', '聚合物', 'paste','powder']
     },{
         category : "三级资源",
         color : '#FF0000',
-        items : ['能量', '碎片', '粉末', '黑珍珠']
+        items : ['能量', '碎片', '粉尘', '黑珍珠']
     },{
         category : "弹药",
         color : '#FF0000',
@@ -63,7 +63,7 @@ export default [
     ,{
         category : '随身装备',
         color : "#030066",
-        items : ['awesome teleporter', 'dino finder', 'soul trap', 'soul gun', 'reusable', '能量元素', '长管步枪', '强效麻醉镖', '肉', '熟']
+        items : ['awesome teleporter', 'dino finder', 'soul trap', 'soul gun', 'reusable', '能量元素', '长管步枪', '强效麻醉镖', '肉', '熟', '鞭子']
     },
     {
         category : "衣服",
