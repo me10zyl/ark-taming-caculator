@@ -72,7 +72,11 @@ export default [
 			'石头','燧石', '引火粉', '木炭', '火药', '金属锭', '高级步枪子弹', '元素碎片'
 		]
 	}
-    ,{
+    ,
+	{
+		category : '',
+	},
+	{
         category : '随身装备',
         color : "#030066",
         items : ['awesome teleporter', 'dino finder', 'soul trap', 'soul gun', 'reusable', '能量元素', '长管步枪', '强效麻醉镖', '肉', '熟', '鞭子']
