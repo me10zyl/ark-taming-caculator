@@ -31,6 +31,15 @@
 				</div>
 			</vue-autosuggest>
 		</div>
+		<div style="clear:both">
+			<h1>流程</h1>
+			<hr />
+			<div>
+				搓子弹：
+			</div>
+			<div id="zidan">
+			</div>
+		</div>
 	</div>
 </template>
 
@@ -38,7 +47,7 @@
 	/* eslint-disable */
 	import items from '@/js/items.js'
 	import items_category from '@/js/category.js'
-	//import $ from 'jquery'
+	import flow from '@/js/flow.js'
 
 
 	export default {
@@ -95,6 +104,8 @@
 					self.copy(text);
 				}
 			}
+
+			flow.init();
 		},
 		methods: {
 			getFilter() {

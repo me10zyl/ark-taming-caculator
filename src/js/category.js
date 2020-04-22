@@ -74,9 +74,6 @@ export default [
 	}
     ,
 	{
-		category : '',
-	},
-	{
         category : '随身装备',
         color : "#030066",
         items : ['awesome teleporter', 'dino finder', 'soul trap', 'soul gun', 'reusable', '能量元素', '长管步枪', '强效麻醉镖', '肉', '熟', '鞭子']
@@ -89,7 +86,5 @@ export default [
         category : "孵龙",
         color : '#0AA00A',
         items : ['incubator', 'nanny', 'te']
-    },{
-
-	}
+    }
 ]
