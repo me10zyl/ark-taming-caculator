@@ -57,9 +57,21 @@ export default [
         color :  "#0077FF",
         items : [
             '炮塔',
-            'turret'
+            'turret',
+			'含硅珍珠',
+			'金属锭',
+			'电路元件',
+			'石头',
+			'甲壳',
+			'水泥'
         ]
-    }
+    },{
+		category : '搓子弹',
+		color : "#0077FF",
+		items : [
+			'石头','燧石', '引火粉', '木炭', '火药', '金属锭', '高级步枪子弹', '元素碎片'
+		]
+	}
     ,{
         category : '随身装备',
         color : "#030066",
@@ -73,5 +85,7 @@ export default [
         category : "孵龙",
         color : '#0AA00A',
         items : ['incubator', 'nanny', 'te']
-    }
+    },{
+
+	}
 ]
