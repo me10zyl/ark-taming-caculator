@@ -1,21 +1,27 @@
 export default {
 	init(){
 		console.log('flow inited')
-		this.parse('zidan', 'st=>start: Start|past:>http://www.google.com[blank]\n' +
-			'e=>end: End|future:>http://www.google.com\n' +
-			'op1=>operation: My Operation|past\n' +
-			'op2=>operation: Stuff|current\n' +
-			'sub1=>subroutine: My Subroutine|invalid\n' +
-			'cond=>condition: Yes\n' +
-			'or No?|approved:>http://www.google.com\n' +
-			'c2=>condition: Good idea|rejected\n' +
-			'io=>inputoutput: catch something...|future\n' +
-			'\n' +
-			'st->op1(right)->cond\n' +
-			'cond(yes, right)->c2\n' +
-			'cond(no)->sub1(left)->op1\n' +
-			'c2(yes)->io->e\n' +
-			'c2(no)->op2->e')
+		this.parse('zidan',
+			'st1=>start: 开始\n' +
+			'st=>parallel: 准备\n' +
+			'meitan=>operation: 打煤炭或烧煤炭\n' +
+			'shitou=>operation: 打石头/燧石\n' +
+			'tie=>operation: 打金属\n' +
+			'shaotie=>operation: 烧铁\n'+
+			'yinhuofen=>operation: 搓引火粉=石头+燧石\n'+
+			'huoyao=>operation: 搓火药=引火粉+煤炭\n' +
+			'zidan=>end: 搓子弹\n' +
+			'st1(right)->st\n' +
+			'st(path1, top)->meitan\n' +
+			'st(path2, right)->shitou\n' +
+			'st(path3, bottom)->tie\n' +
+			'shitou(right)->yinhuofen\n' +
+			'yinhuofen(right)->huoyao\n'+
+			'meitan(right)->huoyao\n' +
+			'tie(right)->shaotie\n' +
+			'shaotie(right)->zidan\n' +
+			'huoyao->zidan\n'
+		)
 	},
 
 	parse(elementId, text){

@@ -1,9 +1,9 @@
 <template>
 	<div>
-		<h1>ARK过滤复制器</h1>
+		<h1 style="display: none">ARK过滤复制器</h1>
 		<hr/>
-		<div v-for="category in categories" v-bind:style="{display:'inline-block', 'margin-right': '20px', border: '1px solid',
-		'vertical-align':'top', 'color' : category.color, 'float' :'left'}">
+		<div style="display: none" v-for="category in categories" v-bind:style="{display:'inline-block', 'margin-right': '20px', border: '1px solid',
+		'vertical-align':'top', 'color' : category.color, 'float' :'left', 'display' : 'none'}">
 			<table>
 			<th><h4>{{category.category}}</h4></th>
 			<tr v-for="item in category.items">
@@ -32,9 +32,9 @@
 			</vue-autosuggest>
 		</div>
 		<div style="clear:both">
-			<h1>流程</h1>
+			<h1 style="display: none">流程</h1>
 			<hr />
-			<div>
+			<div style="display: none">
 				搓子弹：
 			</div>
 			<div id="zidan">
