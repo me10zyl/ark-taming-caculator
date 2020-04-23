@@ -1,9 +1,9 @@
 <template>
 	<div>
-		<h1 style="display: none">ARK过滤复制器</h1>
+		<h1>ARK过滤复制器</h1>
 		<hr/>
-		<div style="display: none" v-for="category in categories" v-bind:style="{display:'inline-block', 'margin-right': '20px', border: '1px solid',
-		'vertical-align':'top', 'color' : category.color, 'float' :'left', 'display' : 'none'}">
+		<div  v-for="category in categories" v-bind:style="{display:'inline-block', 'margin-right': '20px', border: '1px solid',
+		'vertical-align':'top', 'color' : category.color, 'float' :'left'}">
 			<table>
 			<th><h4>{{category.category}}</h4></th>
 			<tr v-for="item in category.items">
@@ -32,9 +32,9 @@
 			</vue-autosuggest>
 		</div>
 		<div style="clear:both">
-			<h1 style="display: none">流程</h1>
+			<h1 >流程</h1>
 			<hr />
-			<div style="display: none">
+			<div >
 				搓子弹：
 			</div>
 			<div id="zidan">
@@ -76,7 +76,7 @@
 		},
 		mounted: function () {
 			let input = document.querySelector('.input input');
-			input.focus();
+			//input.focus();
 			// Force focus
 			let self = this;
 			input.onblur = function () {

@@ -49,10 +49,11 @@ export default [
         color : "#0077FF",
         items : ['床', '箱', '地基','柱子', '门', 'foundation', 'ceil', 'pillar']
     },{
-        category : 'MOD基础建筑',
+        category : '起家（按顺序）',
         color : "#0077FF",
-        items : ['foundation', '床','床头边', 'awesome teleporter', 'refining(汽油)', 'ARKomatic workbench', 'wireless generator', 'mini fabricator', '工业熔炉(金属锭)', 'mini grinder(水泥)', 'ARKomatic checmistry bench(水泥)','ARKomatic fabricator(电子元件)', 'dedicated crfater(水泥电子元件)' ,'S+ crafting station','S+ fabricator(工业熔炉)', 'industrial forge(金属锭)', 'BBQ(dino finder)', 'MINI BAR',  'trough', 'vault*****', 'kibble','smithy',  'soul terminal', 'bookshelf', 'repair', 'dedicated storage','transmitter', 'dedicated crfater(引火火药子弹)']
-    },{
+        items : ['foundation', '床','床头边', 'awesome teleporter', 'refining(汽油)', 'ARKomatic workbench', 'ARKomatic wireless generator', 'mini fabricator', '工业熔炉(金属锭)', 'mini grinder(水泥)', 'ARKomatic checmistry bench(水泥)','ARKomatic fabricator(电子元件)', 'dedicated crfater(水泥电子元件)' ,'S+ crafting station','S+ fabricator(工业熔炉)', 'industrial forge(金属锭)', 'BBQ(dino finder)', 'MINI BAR',  'trough', 'vault*****', 'kibble','smithy',  'soul terminal', 'bookshelf', 'repair', 'dedicated storage','transmitter', 'dedicated crfater(引火火药子弹)']
+    },
+	{
         category : '防御',
         color :  "#0077FF",
         items : [
@@ -82,9 +83,25 @@ export default [
         category : "衣服",
         color : "#030066",
         items : [ '头盔','胸甲','护腿', '手套','靴','泰克胸甲']
-    },{
+    },
+	{
+		category : '传图',
+		color : "#030066",
+		items : ['metal foundation', '床','床头边', 'awesome teleporter', '汽油',  'ARKomatic wireless generator', 'auto turret', 'tek transmitter']
+	},
+	{
         category : "孵龙",
         color : '#0AA00A',
-        items : ['incubator', 'nanny', 'te']
-    }
+        items : ['Incubator', 'Nanny',  'Hatchery', 'Mutator', 'Vivarium', 'Sheep Herder', 'Animal Tender']
+    },
+	{
+		category : "种菜",
+		color : '#0AA00A',
+		items : ['HG', 'Tap', 'Seamless Crop Plot', 'greenhouse', 'item collector', 'compost bin', 'Farmer', 'Gardener', 'Tek Cooking Pot']
+	},
+	{
+		category : '拍据点',
+		color : "#ff003c",
+		items : ['metal foundation', '床','床头边', 'awesome teleporter', '汽油',  'wireless generator', '重炮', '高级步枪子弹', 'ARKomatic turret filler']
+	},
 ]
