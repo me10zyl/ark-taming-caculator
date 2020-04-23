@@ -97,7 +97,7 @@ export default [
 	{
 		category : "种菜",
 		color : '#0AA00A',
-		items : ['HG', 'Tap', 'Seamless Crop Plot', 'greenhouse', 'item collector', 'compost bin', 'Farmer', 'Gardener', 'Tek Cooking Pot']
+		items : ['HG', 'Tap', 'Seamless Crop Plot', '温室', 'item collector', 'compost bin', 'Farmer', 'Gardener', 'Tek Cooking Pot']
 	},
 	{
 		category : '拍据点',
