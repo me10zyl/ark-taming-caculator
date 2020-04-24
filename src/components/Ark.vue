@@ -383,7 +383,7 @@
 				} else {
 					creature.dododexName = creature.name.replace(' ', '').toLowerCase()
 				}
-				this.copy(creature.name_chi.replace(/[A-Z]\- /, ''))
+				this.copy(creature.name_chi.replace(/[A-Z]\- /, '').replace(/\[.+\]/, ''))
                 if(creaturedata == null){
                 	return
 				}
