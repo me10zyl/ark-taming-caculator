@@ -16,6 +16,8 @@ import Vuesax from 'vuesax'
 
 import 'vuesax/dist/vuesax.css' //Vuesax styles
 import 'material-icons/iconfont/material-icons.css';
+import Recipe from "./components/Recipe";
+import Boss from "./components/Boss";
 Vue.use(Vuesax, {
 	// options here
 })
@@ -30,7 +32,9 @@ const router = new VueRouter({
 	routes : [
 		{ path: '/', component: Filter, name: 'filter' },
 		{path : '/taming', component: Ark, name : 'taming'},
-		{path : '/links', component: Links, name : 'links'}
+		{path : '/links', component: Links, name : 'links'},
+		{path : '/boss', component: Boss, name : 'boss'},
+		{path : '/recipe', component: Recipe, name : 'recipe'}
 	]
 })
 
