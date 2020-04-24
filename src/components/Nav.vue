@@ -3,7 +3,9 @@
 		<vs-navbar
 				v-model="indexActive"
 				:color="colorx"
-				class="myNavbar">
+				class="myNavbar"
+				active-text-color="rgba(255,255,255,1)"
+			>
 			<div slot="title">
 				<vs-navbar-title>
 					Yilnz's Ark Helper
