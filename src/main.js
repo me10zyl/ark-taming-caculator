@@ -10,6 +10,7 @@ import VueAutosuggest from "vue-autosuggest";
 import VueRouter from 'vue-router';
 import Ark from "./components/Ark";
 import Filter from "./components/Filter";
+import Links from "./components/Links";
 
 Vue.use(VueAutosuggest);
 Vue.use(VueRouter)
@@ -20,7 +21,8 @@ const router = new VueRouter({
 	mode: 'history',
 	routes : [
 		{ path: '/', component: Filter, name: 'filter' },
-		{path : '/taming', component: Ark, name : 'taming'}
+		{path : '/taming', component: Ark, name : 'taming'},
+		{path : '/links', component: Links, name : 'links'}
 	]
 })
 

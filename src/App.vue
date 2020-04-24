@@ -4,10 +4,13 @@
 		<!--<HelloWorld msg="Welcome to Your Vue.js App"/>-->
 		<!--    <Ark />-->
 		<div>
-			<router-link  :to="{name:'filter',params:{key:value}}">跳转到过滤复制器</router-link>
+			<router-link  :to="{name:'filter',params:{key:value}}">过滤复制器</router-link>
 		</div>
 		<div>
-			<router-link :to="{name:'taming',params:{key:value}}">跳转到驯服计算器</router-link>
+			<router-link :to="{name:'taming',params:{key:value}}">驯服计算器</router-link>
+		</div>
+		<div>
+			<router-link :to="{name:'links',params:{key:value}}">有用的链接(MOD介绍&Wiki)</router-link>
 		</div>
 		<router-view></router-view>
 	</div>
