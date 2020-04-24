@@ -8,7 +8,7 @@
 			>
 			<div slot="title">
 				<vs-navbar-title>
-					Yilnz's Ark Helper
+					Yilnz's 方舟助手
 				</vs-navbar-title>
 			</div>
 

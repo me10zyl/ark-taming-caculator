@@ -116,6 +116,9 @@
 					return e;
 				})
 			},
+			copyText(){
+				console.log(this)
+			},
 			copy(text) {
 				var input = document.createElement('textarea');
 				input.innerHTML = text;
@@ -124,15 +127,23 @@
 				//input.focus()
 				input.select();
 				var result = document.execCommand('copy');
-				console.log(text+" copyed , result: " + result)
+				console.log()
 				document.body.removeChild(input);
 				this.stopFoucs = false
 				//document.querySelector('.input input').focus()
-				return result;
-			},
-			clickHandler(item) {
-				// event fired when clicking on the input
 
+				function getRandomInt(min, max) {
+					return Math.floor(Math.random() * (max - min)) + min;
+				}
+				let color = `rgb(${getRandomInt(0,255)},${getRandomInt(0,255)},${getRandomInt(0,255)})`
+
+				this.$vs.notify({
+					title:'方舟复制过滤器',
+					text: text+" 已复制",
+					color:color
+				})
+
+				return result;
 			},
 			onSelected(item) {
 				this.selected = item.item;
