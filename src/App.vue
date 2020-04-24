@@ -18,10 +18,13 @@
 
 
 <script>
+	import Nav from "./components/Nav";
+
 	export default {
 		data() {
 			return {}
 		}
+
 	}
 </script>
 
