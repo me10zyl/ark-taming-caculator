@@ -8,7 +8,7 @@
 			<th><h4>{{category.category}}</h4></th>
 			<tr v-for="item in category.items">
 				<td>{{item}}</td>
-				<td><button class="copy">复制</button></td>
+				<td><vs-button color="primary" type="border" class="copy">复制</vs-button></td>
 			</tr>
 			</table>
 		</div>
