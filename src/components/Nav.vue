@@ -25,10 +25,10 @@
 				<router-link :to="{name:'boss',params:{key:value}}">BOSS材料</router-link>
 			</vs-navbar-item>
 			<vs-navbar-item index="5">
-				<router-link :to="{name:'links',params:{key:value}}">有用的链接(MOD介绍&Wiki)</router-link>
+				<a href="https://www.dododex.com/dyes" target="_blank">染料制作</a>
 			</vs-navbar-item>
 			<vs-navbar-item index="6">
-				<a href="https://www.dododex.com/dyes" target="_blank">染料制作</a>
+				<router-link :to="{name:'links',params:{key:value}}">有用的链接(MOD介绍&Wiki)</router-link>
 			</vs-navbar-item>
 
 
