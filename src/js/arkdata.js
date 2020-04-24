@@ -510,7 +510,7 @@ $scope.creatures = {
         }
     },
 
-    Anglerfish: {
+    Angler: {
         foodrate: -0.001852 * 149.988007,
         basetorpor: 900,
         basetorporrate: -7.0 * 0.4,

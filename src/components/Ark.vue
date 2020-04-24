@@ -174,6 +174,33 @@
                 $scope.creatures[c].name_chi = dinos[c];
                 this.creatures.push($scope.creatures[c])
             }
+			for (let c in dinos){
+				if(this.creatures.map(e=>e.name).indexOf(c) == -1){
+					this.creatures.push({
+						name : c,
+						name_chi : dinos[c],
+						foodrate: -0.001578 * 211.237854,
+						basetorpor: 400,
+						basetorporrate: -0.1 * 3,
+						torporperlevel: 0.06,
+						baseaffinity: 2000,
+						affinityperlevel: 75,
+						ineffectbyaff: 2.5,
+						basefood: '',
+						foods: [],
+						kibble: '',
+						tamingmethods: [''],
+						damagemultipliers: {
+							"DmgType_Melee_HighTorpidity_StoneWeapon": 0.66,
+							"DmgType_Melee_Human": 0.8,
+							"DmgType_Melee_Dino_Herbivore": 0.6
+						},
+						hitboxes: {
+							"Body": 1
+						}
+					})
+				}
+			}
             window.$scope = $scope
             /*$scope.resetfoods();
             $scope.selectdino();
@@ -320,6 +347,16 @@
                 }
 
                 let creaturedata = $scope.creatures[creature.name];
+
+				let dododexName = dododexNames[creature.name];
+				if (dododexName) {
+					creature.dododexName = dododexName.dododexName;
+				} else {
+					creature.dododexName = creature.name.replace(' ', '').toLowerCase()
+				}
+                if(creaturedata == null){
+                	return
+				}
                 creature.requiredaffinity = creaturedata.baseaffinity + creaturedata.affinityperlevel * creature.level;
                 creature.torpor = creaturedata.basetorpor + creaturedata.basetorpor * creaturedata.torporperlevel * (creature.level - 1);
                 creature.torporrate = creaturedata.basetorporrate + Math.pow(creature.level - 1, $scope.texponent) / ($scope.tcoefficient / creaturedata.basetorporrate);
@@ -334,12 +371,6 @@
 
                 creature.food = creature.basefood
 
-                let dododexName = dododexNames[creature.name];
-                if (dododexName) {
-                    creature.dododexName = dododexName.dododexName;
-                } else {
-                    creature.dododexName = creature.name.replace(' ', '').toLowerCase()
-                }
                 this.arkKoCalc();
                 this.arkMaxFoodCalc();
                 this.arkAllTimeCalc();
