@@ -12,6 +12,14 @@ import Ark from "./components/Ark";
 import Filter from "./components/Filter";
 import Links from "./components/Links";
 
+import Vuesax from 'vuesax'
+
+import 'vuesax/dist/vuesax.css' //Vuesax styles
+import 'material-icons/iconfont/material-icons.css';
+Vue.use(Vuesax, {
+	// options here
+})
+
 Vue.use(VueAutosuggest);
 Vue.use(VueRouter)
 
