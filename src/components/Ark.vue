@@ -35,10 +35,10 @@
                             </template>
                         </vue-autosuggest>
                     </div>
-                    <span style="font-size: 10px;position: absolute; right:80px;top:6px" v-if="creature.name">
+                    <span style="font-size: 10px;position: absolute; right:65px;top:6px" v-if="creature.name">
                         <a :href="dododexUrl" target="_blank" id="dododexUrl">dododex</a>
                     </span>
-					<span style="font-size: 10px;position: absolute; right:50px;top:6px" v-if="creature.name">
+					<span style="font-size: 10px;position: absolute; right:35px;top:6px" v-if="creature.name">
 						<a :href="wikiUrl" target="_blank" id="wikiUrl">wiki</a>
 					</span>
                 </div>
