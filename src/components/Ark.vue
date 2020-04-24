@@ -338,6 +338,29 @@
                 }
                 console.log(this.creature)
             },
+			copy(text) {
+				var input = document.createElement('textarea');
+				input.innerHTML = text;
+				document.body.appendChild(input);
+				//input.focus()
+				input.select();
+				var result = document.execCommand('copy');
+				console.log()
+				document.body.removeChild(input);
+
+				function getRandomInt(min, max) {
+					return Math.floor(Math.random() * (max - min)) + min;
+				}
+				let color = `rgb(${getRandomInt(0,255)},${getRandomInt(0,255)},${getRandomInt(0,255)})`
+
+				this.$vs.notify({
+					title:'做鞍小帮手',
+					text: text+" 已复制",
+					color:color
+				})
+
+				return result;
+			},
             arkSelectLevel() {
                 console.log('select level')
                 let creature = this.creature;
@@ -360,6 +383,7 @@
 				} else {
 					creature.dododexName = creature.name.replace(' ', '').toLowerCase()
 				}
+				this.copy(creature.name_chi.replace(/[A-Z]\- /, ''))
                 if(creaturedata == null){
                 	return
 				}
