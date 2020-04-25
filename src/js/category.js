@@ -70,7 +70,7 @@ export default [
 		category : '搓子弹',
 		color : "#0077FF",
 		items : [
-			'石头','燧石', '引火粉', '木炭', '火药', '金属锭', '高级步枪子弹', '元素碎片'
+			'石头','燧石', '引火粉', '煤炭', '火药', '金属锭', '高级步枪子弹', '元素碎片'
 		]
 	}
     ,
@@ -97,7 +97,7 @@ export default [
 	{
 		category : "种菜",
 		color : '#0AA00A',
-		items : ['HG', 'Tap', 'Seamless Crop', '温室', 'item collector', 'compost bin', 'Farmer', 'Gardener', 'Industry Cooking Pot', 'Tek Cooking Pot']
+		items : ['HG', 'Tap', 'Seamless Crop', '温室', 'item collector', 'compost bin', 'Farmer', 'Gardener', 'S+ Industrial Cooker', 'Tek Cooking Pot']
 	},
 	{
 		category : '拍据点',
