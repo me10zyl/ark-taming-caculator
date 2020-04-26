@@ -51,7 +51,7 @@ export default [
     },{
         category : '起家（按顺序）',
         color : "#0077FF",
-        items : ['foundation', '床','床头边', 'awesome teleporter', 'refining(汽油)', 'ARKomatic workbench', 'ARKomatic wireless generator', 'mini fabricator', '工业熔炉(金属锭)', 'mini grinder(水泥)', 'ARKomatic checmistry bench(水泥)','ARKomatic fabricator(电子元件)', 'dedicated crfater(水泥电子元件)' ,'S+ crafting station','S+ fabricator(工业熔炉)', 'industrial forge(金属锭)', 'BBQ(dino finder)', 'MINI BAR',  'trough', 'vault*****', 'kibble','smithy',  'soul terminal', 'bookshelf', 'repair', 'dedicated storage','transmitter', 'dedicated crfater(引火火药子弹)']
+        items : ['foundation', '床','床头边', 'awesome teleporter','S+ crafting station', 'ARKomatic workbench', 'ARKomatic wireless generator', 'mini fabricator', 'mini industrial forge', 'ARKomatic dedicated crafter','BBQ', 'MINI BAR',  'vault' , 'transmitter', 'bookshelf',  'trough', 'mini grinder', 'kibble', 'soul terminal', 'repair', 'dedicated storage']
     },
 	{
         category : '防御',
