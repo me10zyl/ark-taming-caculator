@@ -1,13 +1,8 @@
 export default [
-    {
-        category : "垃圾",
-        color : '#FF00FF',
-        items : [ '皮肤','时装','奖杯', '服装', "种子", '植入体', '布', '石制','石镐','弓','长矛','配方', '稀有','斧', '镰', 'BIT']
-    }
-	,{
+	{
 		category : '起家',
 		color : "#0077FF",
-		items : ['foundation', '床','床头边', 'awesome teleporter','S+ crafting station', 'ARKomatic workbench', 'ARKomatic wireless generator', 'mini fabricator', 'mini industrial forge', 'ARKomatic dedicated crafter','BBQ', 'MINI BAR',  'vault' , 'transmitter', 'bookshelf',  'trough', 'mini grinder', 'kibble', 'soul terminal', 'repair', 'dedicated storage']
+		items : ['foundation', '床','床头边', 'awesome teleporter','S+ crafting station', 'ARKomatic workbench', 'ARKomatic wireless generator', 'mini fabricator', 'mini industrial forge', 'ARKomatic dedicated crafter','BBQ', 'MINI BAR',  'vault' , 'transmitter', 'bookshelf',  'trough', 'mini grinder', 'kibble',  'repair', 'dedicated storage']
 	},
 	{
 		category : '搓子弹',
@@ -19,12 +14,17 @@ export default [
 	{
 		category : "种菜",
 		color : '#0AA00A',
-		items : ['Seamless Crop', 'HG', 'Tap', , '温室', 'item collector', 'compost bin', 'Farmer', 'Gardener', 'Industry Cooking Pot', 'Tek Cooking Pot']
+		items : ['Seamless Crop', 'HG', 'Tap', '温室', 'item collector', 'compost bin', 'Farmer', 'Gardener', 'Industry Cooking Pot', 'Tek Cooking Pot']
 	},
 	{
 		category : "孵龙",
 		color : '#0AA00A',
-		items : ['Incubator', 'Nanny',  'Hatchery', 'Mutator', 'Vivarium', 'Sheep Herder', 'Animal Tender']
+		items : ['Incubator', 'Nanny', 'soul terminal' , 'Mutator', 'Vivarium', 'Sheep Herder', 'Animal Tender']
+	},
+	{
+		category : "垃圾",
+		color : '#FF00FF',
+		items : ['布','配方', '石制','石镐','种子', '皮肤','时装','奖杯','服装', '弓', '长矛', '斧', '镰', 'BIT', '植入体']
 	},
 	{
         category : "基础资源",
