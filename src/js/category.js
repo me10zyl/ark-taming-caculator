@@ -22,8 +22,16 @@ export default [
 		items : ['Incubator', 'Nanny', 'soul terminal' , 'Mutator', 'Vivarium', 'Sheep Herder', 'Animal Tender']
 	},
 	{
+		category : '防御',
+		color :  "#FF0000",
+		items : [
+			'炮塔',
+			'turret'
+		]
+	},
+	{
 		category : "垃圾",
-		color : '#FF00FF',
+		color : '#FF0000',
 		items : ['布','配方', '石制','石镐','种子', '皮肤','时装','奖杯','服装', '弓', '长矛', '斧', '镰', 'BIT', '植入体']
 	},
 	{
@@ -48,42 +56,25 @@ export default [
         category : "不常用资源",
         color : '#FF0000',
         items : ['毛发', '剪刀']
-    },{
-        category : "鞍",
-        color : '#0F778F',
-        items : ['鞍']
-    },
-    {
-        category : "食物",
-        color : '#FF9900',
-        items : ['浆果', '肉']
-    },
-	{
-        category : '防御',
-        color :  "#0077FF",
-        items : [
-            '炮塔',
-            'turret'
-        ]
     },
 	{
         category : '随身装备',
-        color : "#030066",
+        color : "#6400ff",
         items : ['awesome teleporter', 'dino finder', 'soul trap', 'soul gun', 'reusable', '能量元素', '长管步枪', '强效麻醉镖', '肉', '熟', '鞭子']
     },
     {
         category : "衣服",
-        color : "#030066",
+        color : "#6400ff",
         items : [ '头盔','胸甲','护腿', '手套','靴','泰克胸甲']
     },
 	{
 		category : '传图',
-		color : "#030066",
+		color : "#6400ff",
 		items : ['metal foundation', '床','床头边', 'awesome teleporter', '汽油',  'ARKomatic wireless generator', 'auto turret', 'tek transmitter']
 	},
 	{
 		category : '拍据点',
-		color : "#ff003c",
+		color : "#6400ff",
 		items : ['metal foundation', '床','床头边',  '汽油',  'wireless generator', '重炮', '高级步枪子弹', 'ARKomatic turret filler','awesome teleporter']
 	},
 ]

@@ -1,7 +1,6 @@
 <template>
 	<div>
 		<h1>ARK过滤复制器</h1>
-		<hr/>
 		<div  v-for="category in categories" v-bind:style="{display:'inline-block', 'margin-right': '20px', border: '1px solid',
 		'vertical-align':'top', 'color' : category.color, 'float' :'left'}">
 			<table>
@@ -12,7 +11,7 @@
 			</tr>
 			</table>
 		</div>
-		<hr />
+		<!--<hr />
 		<div class="autosuggest-container">
 			<vue-autosuggest
 					class="input"
@@ -30,7 +29,7 @@
 					<div style="display: inline-block">&nbsp;({{suggestion.item.index}})</div>
 				</div>
 			</vue-autosuggest>
-		</div>
+		</div>-->
 		<div style="clear:both">
 			<h1 >流程</h1>
 			<hr />
