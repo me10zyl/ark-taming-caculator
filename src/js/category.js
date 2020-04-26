@@ -1,18 +1,32 @@
 export default [
     {
-        category : "购买",
-        items : ['/礼包','/购买 ', '/商店 1','/商店 2','/商店 3','/商店 4','/商店 5','/商店 6','/商店 7', '/商店 8','/商店 9','/商店 10','/商店 11','/商店 12' ]
-    },
-    {
         category : "垃圾",
         color : '#FF00FF',
-        items : [ '皮肤','时装','奖杯', '服装', "种子", '植入体', '布', '石制','石镐','弓','长矛','配方', '稀有']
-    },{
-        category :"基础工具",
-        color : '#FF00FF',
-        items :['镐','斧', '镰', 'BIT']
-    },
-    {
+        items : [ '皮肤','时装','奖杯', '服装', "种子", '植入体', '布', '石制','石镐','弓','长矛','配方', '稀有','斧', '镰', 'BIT']
+    }
+	,{
+		category : '起家',
+		color : "#0077FF",
+		items : ['foundation', '床','床头边', 'awesome teleporter','S+ crafting station', 'ARKomatic workbench', 'ARKomatic wireless generator', 'mini fabricator', 'mini industrial forge', 'ARKomatic dedicated crafter','BBQ', 'MINI BAR',  'vault' , 'transmitter', 'bookshelf',  'trough', 'mini grinder', 'kibble', 'soul terminal', 'repair', 'dedicated storage']
+	},
+	{
+		category : '搓子弹',
+		color : "#0077FF",
+		items : [
+			'石头', '含硅珍珠', '甲壳', '角质', '燧石', '引火粉', '煤炭', '火药', '金属锭'
+		]
+	},
+	{
+		category : "种菜",
+		color : '#0AA00A',
+		items : ['Seamless Crop', 'HG', 'Tap', , '温室', 'item collector', 'compost bin', 'Farmer', 'Gardener', 'Industry Cooking Pot', 'Tek Cooking Pot']
+	},
+	{
+		category : "孵龙",
+		color : '#0AA00A',
+		items : ['Incubator', 'Nanny',  'Hatchery', 'Mutator', 'Vivarium', 'Sheep Herder', 'Animal Tender']
+	},
+	{
         category : "基础资源",
         color : '#FF0000',
         items : ['石头', '金属', '茅草','燧石', '纤维', '油', '水晶', '兽皮', '硅珍珠', '毛皮','甲壳','角质', '黑曜石']
@@ -28,7 +42,7 @@ export default [
     },{
         category : "弹药",
         color : '#FF0000',
-        items : ['子弹', '箭']
+        items : ['高级步枪子弹', '箭', '狙击步枪子弹', '麻醉镖']
     },
     {
         category : "不常用资源",
@@ -44,36 +58,14 @@ export default [
         color : '#FF9900',
         items : ['浆果', '肉']
     },
-    {
-        category : '建筑物',
-        color : "#0077FF",
-        items : ['床', '箱', '地基','柱子', '门', 'foundation', 'ceil', 'pillar']
-    },{
-        category : '起家（按顺序）',
-        color : "#0077FF",
-        items : ['foundation', '床','床头边', 'awesome teleporter','S+ crafting station', 'ARKomatic workbench', 'ARKomatic wireless generator', 'mini fabricator', 'mini industrial forge', 'ARKomatic dedicated crafter','BBQ', 'MINI BAR',  'vault' , 'transmitter', 'bookshelf',  'trough', 'mini grinder', 'kibble', 'soul terminal', 'repair', 'dedicated storage']
-    },
 	{
         category : '防御',
         color :  "#0077FF",
         items : [
             '炮塔',
-            'turret',
-			'含硅珍珠',
-			'金属锭',
-			'电路元件',
-			'石头',
-			'甲壳',
-			'水泥'
+            'turret'
         ]
-    },{
-		category : '搓子弹',
-		color : "#0077FF",
-		items : [
-			'石头','燧石', '引火粉', '木炭', '火药', '金属锭', '高级步枪子弹', '元素碎片'
-		]
-	}
-    ,
+    },
 	{
         category : '随身装备',
         color : "#030066",
@@ -88,16 +80,6 @@ export default [
 		category : '传图',
 		color : "#030066",
 		items : ['metal foundation', '床','床头边', 'awesome teleporter', '汽油',  'ARKomatic wireless generator', 'auto turret', 'tek transmitter']
-	},
-	{
-        category : "孵龙",
-        color : '#0AA00A',
-        items : ['Incubator', 'Nanny',  'Hatchery', 'Mutator', 'Vivarium', 'Sheep Herder', 'Animal Tender']
-    },
-	{
-		category : "种菜",
-		color : '#0AA00A',
-		items : ['HG', 'Tap', 'Seamless Crop', '温室', 'item collector', 'compost bin', 'Farmer', 'Gardener', 'Industry Cooking Pot', 'Tek Cooking Pot']
 	},
 	{
 		category : '拍据点',
