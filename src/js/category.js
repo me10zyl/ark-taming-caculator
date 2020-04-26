@@ -84,6 +84,6 @@ export default [
 	{
 		category : '拍据点',
 		color : "#ff003c",
-		items : ['metal foundation', '床','床头边', 'awesome teleporter', '汽油',  'wireless generator', '重炮', '高级步枪子弹', 'ARKomatic turret filler']
+		items : ['metal foundation', '床','床头边',  '汽油',  'wireless generator', '重炮', '高级步枪子弹', 'ARKomatic turret filler','awesome teleporter']
 	},
 ]
