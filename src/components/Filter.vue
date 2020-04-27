@@ -74,27 +74,27 @@
 			}
 		},
 		mounted: function () {
-			let input = document.querySelector('.input input');
+			// let input = document.querySelector('.input input');
 			//input.focus();
 			// Force focus
 			let self = this;
-			input.onblur = function () {
-				if(!self.stopFoucs){
-					//document.querySelector('.input input').focus();
-				}
-			}
-			input.addEventListener('keydown', function (e) {
-				console.log(e.which)
-				if (e.which == 27 || e.which == 20) {
-					input.value = ''
-				}
-				if (e.key.match(/\d/)) {
-					e.preventDefault()
-					console.log(self.getFilter())
-					document.querySelector('.input input');
-					document.querySelector('.autosuggest__results-container').remove()
-				}
-			})
+			// input.onblur = function () {
+			// 	if(!self.stopFoucs){
+			// 		//document.querySelector('.input input').focus();
+			// 	}
+			// }
+			// input.addEventListener('keydown', function (e) {
+			// 	console.log(e.which)
+			// 	if (e.which == 27 || e.which == 20) {
+			// 		input.value = ''
+			// 	}
+			// 	if (e.key.match(/\d/)) {
+			// 		e.preventDefault()
+			// 		console.log(self.getFilter())
+			// 		document.querySelector('.input input');
+			// 		document.querySelector('.autosuggest__results-container').remove()
+			// 	}
+			// })
 
 			let copys = document.querySelectorAll(".copy");
 			for(let i = 0;i < copys.length;i++){
