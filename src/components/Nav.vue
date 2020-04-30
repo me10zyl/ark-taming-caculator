@@ -31,7 +31,7 @@
 				<router-link :to="{name:'links',params:{key:value}}">有用的链接(MOD介绍&Wiki)</router-link>
 			</vs-navbar-item>
 			<vs-navbar-item index="7">
-				<a href="steam://connect/176.109.78.42:27065">连接外服</a>
+				<a href="steam://connect/192.223.27.63:27001">连接外服</a>
 			</vs-navbar-item>
 
 
