@@ -3,7 +3,7 @@
     <vs-list>
     <vs-list-header icon="toc" title="外服列表"></vs-list-header>
     <vs-list-item  v-for="server in serverList" icon="stars"  v-bind:title="server.name" v-bind:subtitle="server.sub_name">  
-    <vs-button  icon="launch" v-bind:href="'steam://connect/' + server.ip"  color="#3dd495"  type="relief" gradient-color-secondary="rgb(130, 207, 23)">连接</vs-button>
+    <vs-button  icon="launch" size="small" v-bind:href="'steam://connect/' + server.ip" :color="colorx" :gradient-color-secondary="colorx2"   type="relief" gradient-color-secondary="rgb(130, 207, 23)">连接</vs-button>
     </vs-list-item>
 
   </vs-list>
@@ -17,6 +17,8 @@
 		name: "server",
         data()  {
             return {
+                colorx:'#c72a75',
+                colorx2:'#5252e8',
                 serverList : [
                     {
                         name : "Bacon Blitz 5/1 50x/Shop/Kit/ORP/AutoProt/6man/TP",
