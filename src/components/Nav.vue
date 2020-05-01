@@ -27,11 +27,11 @@
 			<vs-navbar-item index="5">
 				<a href="https://www.dododex.com/dyes" target="_blank">染料制作</a>
 			</vs-navbar-item>
-			<vs-navbar-item index="6">
-				<router-link :to="{name:'links',params:{key:value}}">有用的链接(MOD介绍&Wiki)</router-link>
-			</vs-navbar-item>
+			<!-- <vs-navbar-item index="6">
+			 	<router-link :to="{name:'links',params:{key:value}}">有用的链接(MOD介绍&Wiki)</router-link>
+			 </vs-navbar-item>-->
 			<vs-navbar-item index="7">
-				<a href="steam://connect/192.223.27.63:27001">连接外服</a>
+				<router-link :to="{name:'server',params:{key:value}}">外服列表</router-link>
 			</vs-navbar-item>
 
 

@@ -11,6 +11,7 @@ import VueRouter from 'vue-router';
 import Ark from "./components/Ark";
 import Filter from "./components/Filter";
 import Links from "./components/Links";
+import ServerList from "./components/ServerList";
 
 import Vuesax from 'vuesax'
 
@@ -34,7 +35,8 @@ const router = new VueRouter({
 		{path : '/taming', component: Ark, name : 'taming'},
 		{path : '/links', component: Links, name : 'links'},
 		{path : '/boss', component: Boss, name : 'boss'},
-		{path : '/recipe', component: Recipe, name : 'recipe'}
+		{path : '/recipe', component: Recipe, name : 'recipe'},
+		{path : '/server', component: ServerList, name : 'server'}
 	]
 })
 
