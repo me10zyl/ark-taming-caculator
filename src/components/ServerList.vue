@@ -2,8 +2,8 @@
 	<div>
     <vs-list>
     <vs-list-header icon="toc" title="外服列表"></vs-list-header>
-    <vs-list-item  v-for="server in serverList" icon="stars"  v-bind:title="server.name" v-bind:subtitle="server.sub_name">  
-    <vs-button  icon="launch" size="small" v-bind:href="'steam://connect/' + server.ip" :color="colorx" :gradient-color-secondary="colorx2"   type="relief" gradient-color-secondary="rgb(130, 207, 23)">连接</vs-button>
+    <vs-list-item  v-for="server in serverList" icon="stars" v-bind:title="server.name" v-bind:subtitle="server.sub_name">  
+    <vs-button  icon="launch" size="small" v-bind:href="'steam://connect/' + server.ip"  text-color="#aaff00"  color="primary" type="relief" gradient-color-secondary="rgb(130, 207, 23)">连接</vs-button>
     </vs-list-item>
 
   </vs-list>
