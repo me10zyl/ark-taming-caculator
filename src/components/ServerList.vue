@@ -29,6 +29,10 @@
                         name : "NA UniversalARK FullPvP 100X/SHOP/SuperKitS/TELEP",
                         sub_name : "100倍/传/S+",
                         ip : "85.190.159.50:21001"
+                    },{
+                        name : "NAMELESS-4/24-100X-RAGNAC/A.MESH/A.PROT/S+/P.SHOP",
+                        sub_name : "人超多",
+                        ip : "195.7.2.110:27015"
                     }
                 ]
             }
