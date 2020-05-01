@@ -8,7 +8,7 @@
 			>
 			<div slot="title">
 				<vs-navbar-title>
-					Yilnz's 方舟助手
+					<router-link  :to="{name:'filter',params:{key:value}}" color="black">Yilnz's 方舟助手</router-link>
 				</vs-navbar-title>
 			</div>
 
