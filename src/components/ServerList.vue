@@ -2,8 +2,8 @@
 	<div>
     <vs-list>
     <vs-list-header icon="toc" title="外服列表"></vs-list-header>
-    <vs-list-item  v-for="server,index in serverList" icon="stars" v-bind:title="(index+1)+'. ' + server.name" v-bind:subtitle="server.sub_name">  
-    <vs-button  icon="launch" size="small" v-bind:href="'steam://connect/' + server.ip"  text-color="#aaff00"  color="primary" type="relief" gradient-color-secondary="rgb(130, 207, 23)">连接</vs-button>
+    <vs-list-item  v-for="server,index in serverList" icon="stars" v-bind:title="(index+1)+'. ' + server.name + ' (' + server.ip + ')'" v-bind:subtitle="server.sub_name">  
+    <vs-button  icon="launch" size="small" @click="onConnect(server)"  text-color="#aaff00"  color="primary" type="relief" gradient-color-secondary="rgb(130, 207, 23)">连接</vs-button>
     </vs-list-item>
 
   </vs-list>
@@ -35,6 +35,11 @@
                         ip : "195.7.2.110:27017"
                     }
                 ]
+            }
+        },
+        methods :{
+            onConnect : function(server){
+               location.href='steam://connect/' + server.ip
             }
         }
 	}
