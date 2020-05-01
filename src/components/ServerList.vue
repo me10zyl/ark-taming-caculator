@@ -23,7 +23,7 @@
                     {
                         name : "Bacon Blitz 5/1 50x/Shop/Kit/ORP/AutoProt/6man/TP",
                         sub_name : "人多，无传送龙，无精灵球",
-                        ip : "192.223.27.63:27001"
+                        ip : "192.223.27.63:27003"
                     },
                       {
                         name : "NA UniversalARK FullPvP 100X/SHOP/SuperKitS/TELEP",
