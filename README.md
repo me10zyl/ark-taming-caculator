@@ -1,5 +1,9 @@
 # ark-taming-caculator
 
+方舟驯服计算器
+
+![QQ截图20220325144011.png](https://s2.loli.net/2022/03/25/416bm9dvZU7NjTy.png)
+
 ## Project setup
 ```
 npm install
